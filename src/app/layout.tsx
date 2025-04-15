@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import "@/styles/globals.css"; 
+import './globals.css'
+import Navbar from "@/components/Navbar/Navbar";
+
 
 export default function RootLayout({
   children,
@@ -10,9 +11,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased bg-gray-50 dark:bg-gray-900 dark:text-white">
-        <Header />
-        <main className="min-h-screen">{children}</main>
+      <body className="font-[sans] bg-gray-50 dark:bg-gray-900 dark:text-white">
+        <Navbar />
+          <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

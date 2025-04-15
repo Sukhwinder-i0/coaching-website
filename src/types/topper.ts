@@ -1,6 +1,6 @@
 import { Document } from "mongoose"
 
-export interface IStar extends Document {
+export interface ITopper extends Document {
     name: string,
     rank: number,
     percentage? : number,

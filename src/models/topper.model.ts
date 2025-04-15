@@ -1,7 +1,7 @@
-import { IStar } from "@/types/star";
+import { ITopper } from "@/types/topper";
 import mongoose, { Schema } from "mongoose";
 
-const starSchema: Schema<IStar> = new Schema(
+const topperSchema: Schema<ITopper> = new Schema(
   {
     name: {
       type: String,
@@ -29,4 +29,4 @@ const starSchema: Schema<IStar> = new Schema(
   { timestamps: true }
 );
 
-export const Star = mongoose.model("star", starSchema)
+export const Topper = mongoose.model("topper", topperSchema)

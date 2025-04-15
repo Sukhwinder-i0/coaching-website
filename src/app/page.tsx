@@ -1,19 +1,10 @@
-// import Layout from "@/components/Layout";
-// import { Button } from "@/components/ui/button";
+import Topper from "@/components/Topper/Topper";
 
-import RootLayout from "./layout";
 
 export default function Home() {
   return (
-    <RootLayout>
-      <section className="text-center px-6 py-20 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
-        <h2 className="text-4xl font-bold mb-4">Your Journey to IIT Begins Here</h2>
-        <p className="mb-6 text-lg">Trusted Coaching for Classes 9–12 and JEE Preparation</p>
-        {/* <div className="space-x-4">
-          <Button variant="secondary">Explore Courses</Button>
-          <Button variant="outline">Join Free Demo Class</Button>
-        </div> */}
+      <section className="min-h-screen justify-around flex px-6 py-34 bg-gradient-to-r from-slate-700 to-slate-800 text-white">
+        <Topper name="holder one" category="jee" rank="AIR 8452" batch="2024-25" />
       </section>
-    </RootLayout>
   );
 }
