@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/carousel"
 import Topper from "../Topper/Topper"
 
-export function CarouselDemo() {
+export function ToppersCarousel() {
   const toppers = [
     { name: "Alice", rank: "AIR 1", batch: "2020-21", category: "General" },
     { name: "Bob", rank: "AIR 5", batch: "2021-22", category: "OBC" },
