@@ -6,15 +6,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import Topper from "../Topper/Topper"
+import Topper from "../Achievers/Topper"
 
 export function ToppersCarousel() {
   const toppers = [
-    { name: "Alice", rank: "AIR 1", batch: "2020-21", category: "General" },
-    { name: "Bob", rank: "AIR 5", batch: "2021-22", category: "OBC" },
-    { name: "Charlie", rank: "AIR 12", batch: "2022-23", category: "SC" },
-    { name: "David", rank: "AIR 20", batch: "2020-21", category: "ST" },
+
     { name: "Eve", rank: "AIR 42", batch: "2023-24", category: "EWS" },
+    { name: "Alice", rank: "AIR 1", batch: "2020-21", category: "General",url:"https://images.pexels.com/photos/1007066/pexels-photo-1007066.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+    { name: "Bob", rank: "AIR 5", batch: "2021-22", category: "OBC" },
     
   ]
 
@@ -29,6 +28,7 @@ export function ToppersCarousel() {
                 rank={topper.rank}
                 batch={topper.batch}
                 category={topper.category}
+                url={topper.url}
               />
             </div>
           </CarouselItem>
