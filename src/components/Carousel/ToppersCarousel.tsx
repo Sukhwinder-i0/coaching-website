@@ -6,29 +6,30 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import Topper from "../Achievers/Topper"
+import Card from "../Card"
 
 export function ToppersCarousel() {
   const toppers = [
 
-    { name: "Eve", rank: "AIR 42", batch: "2023-24", category: "EWS" },
-    { name: "Alice", rank: "AIR 1", batch: "2020-21", category: "General",url:"https://images.pexels.com/photos/1007066/pexels-photo-1007066.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-    { name: "Bob", rank: "AIR 5", batch: "2021-22", category: "OBC" },
+    { name: "Vishal", rank: "AIR 237", category: "jee advanced", batch: "2022", url: "/vishal-1.png" },
+    { name: "Himanshu Galav", rank: "AIR 2129", category: "jee advanced", batch: "2021(obc)", url:"himanshu1.jpg" },
+    { name: "Nidhi Arya", rank: "Neet score 675", category: "Neet", batch:"2024", url: "/nidhi.jpg"},
     
   ]
 
   return (
-    <Carousel className="w-full max-w-2xl flex justify-center" >
-      <CarouselContent className="flex justify-center">
+    <Carousel className="w-full " >
+      <CarouselContent >
         {toppers.map((topper, index) => (
-          <CarouselItem key={index}>
+          <CarouselItem key={index} >
             <div className="p-5 w-full flex justify-center ">
-              <Topper
+              <Card
+              type="topper"
                 name={topper.name}
                 rank={topper.rank}
                 batch={topper.batch}
                 category={topper.category}
-                url={topper.url}
+                imageUrl={topper.url}
               />
             </div>
           </CarouselItem>

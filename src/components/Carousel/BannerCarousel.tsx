@@ -6,27 +6,47 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import Banner from "../Hero/Banner"
+import Banner from "../Banner"
 
 export function BannerCarousel() {
   const banners = [
     {
-      url: "https://images.pexels.com/photos/2678468/pexels-photo-2678468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      alt: "Banner 1"
-    }, 
-    {
-      url: "https://images.pexels.com/photos/1181534/pexels-photo-1181534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      url: "/poster.png",
       alt: "Banner 2"
     }, 
     {
-      url: "https://images.pexels.com/photos/5212340/pexels-photo-5212340.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      url: "/logo.png",
+      alt: "Banner 2"
+    }, 
+    
+    {
+      url: "/banner-5.avif",
       alt: "Banner 3"
     }, 
+    {
+      url: "/banner-4.jpg",
+      alt: "Banner 3"
+    }, 
+    {
+      url: "/banner-8.avif",
+      alt: "Banner 1"
+    }, 
+    {
+      url: "/banner-7.jpg",
+      alt: "Banner 2"
+    }, 
+    
+    {
+      url: "/Logo.jpg",
+      alt: "Banner 2"
+    }, 
+    
+    
 
   ]
 
   return (
-    <Carousel className="w-full mb-20 ">
+    <Carousel className="w-full ">
       <CarouselContent>
         {banners.map((banner, index) => (
           <CarouselItem key={index}>

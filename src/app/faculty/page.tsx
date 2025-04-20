@@ -1,16 +1,16 @@
+import Faculty from '@/components/Faculty'
 import React from 'react'
-import FacultyCard from './Faculty'
 
 const FacultySec = () => {
   return (
     <div className='w-full m-5 flex justify-evenly' >
-      <FacultyCard 
+      <Faculty
         name="Bhagwan Saini" 
         subject="Maths" 
         experience={15} 
         bio="A super energetic with solid explanations" 
       />
-      <FacultyCard 
+      <Faculty 
         name="ygfg" 
         subject="Maths" 
         experience={15} 

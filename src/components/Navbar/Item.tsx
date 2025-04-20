@@ -16,7 +16,7 @@ const Item = (props: ItemProps) => {
     <button
       onClick={props.onClick}
       className={clsx(
-        'px-4 py-2 rounded cursor-pointer transition duration-200 hover:bg-gray-800',
+        'px-4 py-1 rounded-sm cursor-pointer transition duration-200 hover:bg-gray-800',
         props.isActive ? 'bg-gray-700 text-white' : 'text-gray-300',
         props.className
       )}
