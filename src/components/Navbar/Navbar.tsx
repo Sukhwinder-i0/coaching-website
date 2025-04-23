@@ -9,7 +9,7 @@ import { Rocket } from 'lucide-react'
 
 const navItems = [
   { text: 'Home', path: '/' },
-  { text: 'Courses', path: '/courses' },
+  { text: 'Batches', path: '/batches' },
   { text: 'Faculty', path: '/faculty' },
   { text: 'Contact', path: '/contact' }
 ]

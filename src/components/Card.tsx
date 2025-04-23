@@ -39,7 +39,7 @@ const Card: React.FC<CardProps> = (props) => {
 
   if (props.type === 'faculty') {
     return (
-      <div className='rounded-3xl bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 w-full max-w-lg shadow-xl p-6 flex flex-col md:flex-row gap-6 items-center hover:shadow-blue-500/40 transition duration-300 ease-in-out'>
+      <div className='rounded-3xl bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 w-full max-w-lg shadow-md p-6 flex flex-col md:flex-row gap-6 items-center hover:shadow-blue-500/40 transition duration-300 ease-in-out hover:scale-105 border-2 border-blue-500'>
         <div className='w-28 h-28 rounded-full overflow-hidden border-2 border-blue-500'>
           <img src={props.imageUrl} alt={props.alt} className='w-full h-full object-cover' />
         </div>
