@@ -1,11 +1,8 @@
 import { ICourse } from "@/types/course";
 import mongoose, { Schema } from "mongoose";
 
-const courseSchema: Schema<ICourse> = new Schema (
+const batchSchema: Schema<ICourse> = new Schema (
   {
-    name: {
-      type: String,
-    },
 
     class: {
       type: Number,
@@ -35,4 +32,4 @@ const courseSchema: Schema<ICourse> = new Schema (
   {timestamps: true}
 )
 
-export const Course = mongoose.model("course", courseSchema)
+export const BatchModel = mongoose.model("batch", batchSchema)
