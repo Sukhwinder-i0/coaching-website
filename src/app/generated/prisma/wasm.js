@@ -127,6 +127,28 @@ exports.Prisma.TopperScalarFieldEnum = {
   exam: 'exam'
 };
 
+exports.Prisma.FacultyScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  subject: 'subject',
+  experience: 'experience',
+  bio: 'bio',
+  avatar: 'avatar'
+};
+
+exports.Prisma.BatchScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  category: 'category',
+  level: 'level',
+  description: 'description',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  price: 'price',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -141,10 +163,22 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.Category = exports.$Enums.Category = {
+  JEE: 'JEE',
+  NEET: 'NEET'
+};
 
+exports.Level = exports.$Enums.Level = {
+  IX: 'IX',
+  X: 'X',
+  XI: 'XI',
+  XII: 'XII'
+};
 
 exports.Prisma.ModelName = {
-  Topper: 'Topper'
+  Topper: 'Topper',
+  Faculty: 'Faculty',
+  Batch: 'Batch'
 };
 
 /**

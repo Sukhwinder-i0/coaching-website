@@ -18,6 +18,47 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type Topper = $Result.DefaultSelection<Prisma.$TopperPayload>
+/**
+ * Model Faculty
+ * 
+ */
+export type Faculty = $Result.DefaultSelection<Prisma.$FacultyPayload>
+/**
+ * Model Batch
+ * 
+ */
+export type Batch = $Result.DefaultSelection<Prisma.$BatchPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const Category: {
+  JEE: 'JEE',
+  NEET: 'NEET'
+};
+
+export type Category = (typeof Category)[keyof typeof Category]
+
+
+export const Level: {
+  IX: 'IX',
+  X: 'X',
+  XI: 'XI',
+  XII: 'XII'
+};
+
+export type Level = (typeof Level)[keyof typeof Level]
+
+}
+
+export type Category = $Enums.Category
+
+export const Category: typeof $Enums.Category
+
+export type Level = $Enums.Level
+
+export const Level: typeof $Enums.Level
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +194,26 @@ export class PrismaClient<
     * ```
     */
   get topper(): Prisma.TopperDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.faculty`: Exposes CRUD operations for the **Faculty** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Faculties
+    * const faculties = await prisma.faculty.findMany()
+    * ```
+    */
+  get faculty(): Prisma.FacultyDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.batch`: Exposes CRUD operations for the **Batch** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Batches
+    * const batches = await prisma.batch.findMany()
+    * ```
+    */
+  get batch(): Prisma.BatchDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +654,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Topper: 'Topper'
+    Topper: 'Topper',
+    Faculty: 'Faculty',
+    Batch: 'Batch'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +675,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "topper"
+      modelProps: "topper" | "faculty" | "batch"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +750,154 @@ export namespace Prisma {
           count: {
             args: Prisma.TopperCountArgs<ExtArgs>
             result: $Utils.Optional<TopperCountAggregateOutputType> | number
+          }
+        }
+      }
+      Faculty: {
+        payload: Prisma.$FacultyPayload<ExtArgs>
+        fields: Prisma.FacultyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FacultyFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacultyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FacultyFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacultyPayload>
+          }
+          findFirst: {
+            args: Prisma.FacultyFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacultyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FacultyFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacultyPayload>
+          }
+          findMany: {
+            args: Prisma.FacultyFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacultyPayload>[]
+          }
+          create: {
+            args: Prisma.FacultyCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacultyPayload>
+          }
+          createMany: {
+            args: Prisma.FacultyCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FacultyCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacultyPayload>[]
+          }
+          delete: {
+            args: Prisma.FacultyDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacultyPayload>
+          }
+          update: {
+            args: Prisma.FacultyUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacultyPayload>
+          }
+          deleteMany: {
+            args: Prisma.FacultyDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FacultyUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FacultyUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacultyPayload>[]
+          }
+          upsert: {
+            args: Prisma.FacultyUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FacultyPayload>
+          }
+          aggregate: {
+            args: Prisma.FacultyAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFaculty>
+          }
+          groupBy: {
+            args: Prisma.FacultyGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FacultyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FacultyCountArgs<ExtArgs>
+            result: $Utils.Optional<FacultyCountAggregateOutputType> | number
+          }
+        }
+      }
+      Batch: {
+        payload: Prisma.$BatchPayload<ExtArgs>
+        fields: Prisma.BatchFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BatchFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BatchPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BatchFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BatchPayload>
+          }
+          findFirst: {
+            args: Prisma.BatchFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BatchPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BatchFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BatchPayload>
+          }
+          findMany: {
+            args: Prisma.BatchFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BatchPayload>[]
+          }
+          create: {
+            args: Prisma.BatchCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BatchPayload>
+          }
+          createMany: {
+            args: Prisma.BatchCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BatchCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BatchPayload>[]
+          }
+          delete: {
+            args: Prisma.BatchDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BatchPayload>
+          }
+          update: {
+            args: Prisma.BatchUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BatchPayload>
+          }
+          deleteMany: {
+            args: Prisma.BatchDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BatchUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BatchUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BatchPayload>[]
+          }
+          upsert: {
+            args: Prisma.BatchUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BatchPayload>
+          }
+          aggregate: {
+            args: Prisma.BatchAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBatch>
+          }
+          groupBy: {
+            args: Prisma.BatchGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BatchGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BatchCountArgs<ExtArgs>
+            result: $Utils.Optional<BatchCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +986,8 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     topper?: TopperOmit
+    faculty?: FacultyOmit
+    batch?: BatchOmit
   }
 
   /* Types for Logging */
@@ -1929,6 +2142,2146 @@ export namespace Prisma {
 
 
   /**
+   * Model Faculty
+   */
+
+  export type AggregateFaculty = {
+    _count: FacultyCountAggregateOutputType | null
+    _avg: FacultyAvgAggregateOutputType | null
+    _sum: FacultySumAggregateOutputType | null
+    _min: FacultyMinAggregateOutputType | null
+    _max: FacultyMaxAggregateOutputType | null
+  }
+
+  export type FacultyAvgAggregateOutputType = {
+    id: number | null
+    experience: number | null
+  }
+
+  export type FacultySumAggregateOutputType = {
+    id: number | null
+    experience: number | null
+  }
+
+  export type FacultyMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    subject: string | null
+    experience: number | null
+    bio: string | null
+    avatar: string | null
+  }
+
+  export type FacultyMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    subject: string | null
+    experience: number | null
+    bio: string | null
+    avatar: string | null
+  }
+
+  export type FacultyCountAggregateOutputType = {
+    id: number
+    name: number
+    subject: number
+    experience: number
+    bio: number
+    avatar: number
+    _all: number
+  }
+
+
+  export type FacultyAvgAggregateInputType = {
+    id?: true
+    experience?: true
+  }
+
+  export type FacultySumAggregateInputType = {
+    id?: true
+    experience?: true
+  }
+
+  export type FacultyMinAggregateInputType = {
+    id?: true
+    name?: true
+    subject?: true
+    experience?: true
+    bio?: true
+    avatar?: true
+  }
+
+  export type FacultyMaxAggregateInputType = {
+    id?: true
+    name?: true
+    subject?: true
+    experience?: true
+    bio?: true
+    avatar?: true
+  }
+
+  export type FacultyCountAggregateInputType = {
+    id?: true
+    name?: true
+    subject?: true
+    experience?: true
+    bio?: true
+    avatar?: true
+    _all?: true
+  }
+
+  export type FacultyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Faculty to aggregate.
+     */
+    where?: FacultyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Faculties to fetch.
+     */
+    orderBy?: FacultyOrderByWithRelationInput | FacultyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FacultyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Faculties from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Faculties.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Faculties
+    **/
+    _count?: true | FacultyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FacultyAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FacultySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FacultyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FacultyMaxAggregateInputType
+  }
+
+  export type GetFacultyAggregateType<T extends FacultyAggregateArgs> = {
+        [P in keyof T & keyof AggregateFaculty]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFaculty[P]>
+      : GetScalarType<T[P], AggregateFaculty[P]>
+  }
+
+
+
+
+  export type FacultyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacultyWhereInput
+    orderBy?: FacultyOrderByWithAggregationInput | FacultyOrderByWithAggregationInput[]
+    by: FacultyScalarFieldEnum[] | FacultyScalarFieldEnum
+    having?: FacultyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FacultyCountAggregateInputType | true
+    _avg?: FacultyAvgAggregateInputType
+    _sum?: FacultySumAggregateInputType
+    _min?: FacultyMinAggregateInputType
+    _max?: FacultyMaxAggregateInputType
+  }
+
+  export type FacultyGroupByOutputType = {
+    id: number
+    name: string
+    subject: string
+    experience: number
+    bio: string
+    avatar: string
+    _count: FacultyCountAggregateOutputType | null
+    _avg: FacultyAvgAggregateOutputType | null
+    _sum: FacultySumAggregateOutputType | null
+    _min: FacultyMinAggregateOutputType | null
+    _max: FacultyMaxAggregateOutputType | null
+  }
+
+  type GetFacultyGroupByPayload<T extends FacultyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FacultyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FacultyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FacultyGroupByOutputType[P]>
+            : GetScalarType<T[P], FacultyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FacultySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    subject?: boolean
+    experience?: boolean
+    bio?: boolean
+    avatar?: boolean
+  }, ExtArgs["result"]["faculty"]>
+
+  export type FacultySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    subject?: boolean
+    experience?: boolean
+    bio?: boolean
+    avatar?: boolean
+  }, ExtArgs["result"]["faculty"]>
+
+  export type FacultySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    subject?: boolean
+    experience?: boolean
+    bio?: boolean
+    avatar?: boolean
+  }, ExtArgs["result"]["faculty"]>
+
+  export type FacultySelectScalar = {
+    id?: boolean
+    name?: boolean
+    subject?: boolean
+    experience?: boolean
+    bio?: boolean
+    avatar?: boolean
+  }
+
+  export type FacultyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "subject" | "experience" | "bio" | "avatar", ExtArgs["result"]["faculty"]>
+
+  export type $FacultyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Faculty"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      subject: string
+      experience: number
+      bio: string
+      avatar: string
+    }, ExtArgs["result"]["faculty"]>
+    composites: {}
+  }
+
+  type FacultyGetPayload<S extends boolean | null | undefined | FacultyDefaultArgs> = $Result.GetResult<Prisma.$FacultyPayload, S>
+
+  type FacultyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FacultyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FacultyCountAggregateInputType | true
+    }
+
+  export interface FacultyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Faculty'], meta: { name: 'Faculty' } }
+    /**
+     * Find zero or one Faculty that matches the filter.
+     * @param {FacultyFindUniqueArgs} args - Arguments to find a Faculty
+     * @example
+     * // Get one Faculty
+     * const faculty = await prisma.faculty.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FacultyFindUniqueArgs>(args: SelectSubset<T, FacultyFindUniqueArgs<ExtArgs>>): Prisma__FacultyClient<$Result.GetResult<Prisma.$FacultyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Faculty that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FacultyFindUniqueOrThrowArgs} args - Arguments to find a Faculty
+     * @example
+     * // Get one Faculty
+     * const faculty = await prisma.faculty.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FacultyFindUniqueOrThrowArgs>(args: SelectSubset<T, FacultyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FacultyClient<$Result.GetResult<Prisma.$FacultyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Faculty that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacultyFindFirstArgs} args - Arguments to find a Faculty
+     * @example
+     * // Get one Faculty
+     * const faculty = await prisma.faculty.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FacultyFindFirstArgs>(args?: SelectSubset<T, FacultyFindFirstArgs<ExtArgs>>): Prisma__FacultyClient<$Result.GetResult<Prisma.$FacultyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Faculty that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacultyFindFirstOrThrowArgs} args - Arguments to find a Faculty
+     * @example
+     * // Get one Faculty
+     * const faculty = await prisma.faculty.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FacultyFindFirstOrThrowArgs>(args?: SelectSubset<T, FacultyFindFirstOrThrowArgs<ExtArgs>>): Prisma__FacultyClient<$Result.GetResult<Prisma.$FacultyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Faculties that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacultyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Faculties
+     * const faculties = await prisma.faculty.findMany()
+     * 
+     * // Get first 10 Faculties
+     * const faculties = await prisma.faculty.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const facultyWithIdOnly = await prisma.faculty.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FacultyFindManyArgs>(args?: SelectSubset<T, FacultyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacultyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Faculty.
+     * @param {FacultyCreateArgs} args - Arguments to create a Faculty.
+     * @example
+     * // Create one Faculty
+     * const Faculty = await prisma.faculty.create({
+     *   data: {
+     *     // ... data to create a Faculty
+     *   }
+     * })
+     * 
+     */
+    create<T extends FacultyCreateArgs>(args: SelectSubset<T, FacultyCreateArgs<ExtArgs>>): Prisma__FacultyClient<$Result.GetResult<Prisma.$FacultyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Faculties.
+     * @param {FacultyCreateManyArgs} args - Arguments to create many Faculties.
+     * @example
+     * // Create many Faculties
+     * const faculty = await prisma.faculty.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FacultyCreateManyArgs>(args?: SelectSubset<T, FacultyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Faculties and returns the data saved in the database.
+     * @param {FacultyCreateManyAndReturnArgs} args - Arguments to create many Faculties.
+     * @example
+     * // Create many Faculties
+     * const faculty = await prisma.faculty.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Faculties and only return the `id`
+     * const facultyWithIdOnly = await prisma.faculty.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FacultyCreateManyAndReturnArgs>(args?: SelectSubset<T, FacultyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacultyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Faculty.
+     * @param {FacultyDeleteArgs} args - Arguments to delete one Faculty.
+     * @example
+     * // Delete one Faculty
+     * const Faculty = await prisma.faculty.delete({
+     *   where: {
+     *     // ... filter to delete one Faculty
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FacultyDeleteArgs>(args: SelectSubset<T, FacultyDeleteArgs<ExtArgs>>): Prisma__FacultyClient<$Result.GetResult<Prisma.$FacultyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Faculty.
+     * @param {FacultyUpdateArgs} args - Arguments to update one Faculty.
+     * @example
+     * // Update one Faculty
+     * const faculty = await prisma.faculty.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FacultyUpdateArgs>(args: SelectSubset<T, FacultyUpdateArgs<ExtArgs>>): Prisma__FacultyClient<$Result.GetResult<Prisma.$FacultyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Faculties.
+     * @param {FacultyDeleteManyArgs} args - Arguments to filter Faculties to delete.
+     * @example
+     * // Delete a few Faculties
+     * const { count } = await prisma.faculty.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FacultyDeleteManyArgs>(args?: SelectSubset<T, FacultyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Faculties.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacultyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Faculties
+     * const faculty = await prisma.faculty.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FacultyUpdateManyArgs>(args: SelectSubset<T, FacultyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Faculties and returns the data updated in the database.
+     * @param {FacultyUpdateManyAndReturnArgs} args - Arguments to update many Faculties.
+     * @example
+     * // Update many Faculties
+     * const faculty = await prisma.faculty.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Faculties and only return the `id`
+     * const facultyWithIdOnly = await prisma.faculty.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FacultyUpdateManyAndReturnArgs>(args: SelectSubset<T, FacultyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacultyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Faculty.
+     * @param {FacultyUpsertArgs} args - Arguments to update or create a Faculty.
+     * @example
+     * // Update or create a Faculty
+     * const faculty = await prisma.faculty.upsert({
+     *   create: {
+     *     // ... data to create a Faculty
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Faculty we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FacultyUpsertArgs>(args: SelectSubset<T, FacultyUpsertArgs<ExtArgs>>): Prisma__FacultyClient<$Result.GetResult<Prisma.$FacultyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Faculties.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacultyCountArgs} args - Arguments to filter Faculties to count.
+     * @example
+     * // Count the number of Faculties
+     * const count = await prisma.faculty.count({
+     *   where: {
+     *     // ... the filter for the Faculties we want to count
+     *   }
+     * })
+    **/
+    count<T extends FacultyCountArgs>(
+      args?: Subset<T, FacultyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FacultyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Faculty.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacultyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FacultyAggregateArgs>(args: Subset<T, FacultyAggregateArgs>): Prisma.PrismaPromise<GetFacultyAggregateType<T>>
+
+    /**
+     * Group by Faculty.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FacultyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FacultyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FacultyGroupByArgs['orderBy'] }
+        : { orderBy?: FacultyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FacultyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFacultyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Faculty model
+   */
+  readonly fields: FacultyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Faculty.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FacultyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Faculty model
+   */
+  interface FacultyFieldRefs {
+    readonly id: FieldRef<"Faculty", 'Int'>
+    readonly name: FieldRef<"Faculty", 'String'>
+    readonly subject: FieldRef<"Faculty", 'String'>
+    readonly experience: FieldRef<"Faculty", 'Int'>
+    readonly bio: FieldRef<"Faculty", 'String'>
+    readonly avatar: FieldRef<"Faculty", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Faculty findUnique
+   */
+  export type FacultyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faculty
+     */
+    select?: FacultySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faculty
+     */
+    omit?: FacultyOmit<ExtArgs> | null
+    /**
+     * Filter, which Faculty to fetch.
+     */
+    where: FacultyWhereUniqueInput
+  }
+
+  /**
+   * Faculty findUniqueOrThrow
+   */
+  export type FacultyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faculty
+     */
+    select?: FacultySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faculty
+     */
+    omit?: FacultyOmit<ExtArgs> | null
+    /**
+     * Filter, which Faculty to fetch.
+     */
+    where: FacultyWhereUniqueInput
+  }
+
+  /**
+   * Faculty findFirst
+   */
+  export type FacultyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faculty
+     */
+    select?: FacultySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faculty
+     */
+    omit?: FacultyOmit<ExtArgs> | null
+    /**
+     * Filter, which Faculty to fetch.
+     */
+    where?: FacultyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Faculties to fetch.
+     */
+    orderBy?: FacultyOrderByWithRelationInput | FacultyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Faculties.
+     */
+    cursor?: FacultyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Faculties from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Faculties.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Faculties.
+     */
+    distinct?: FacultyScalarFieldEnum | FacultyScalarFieldEnum[]
+  }
+
+  /**
+   * Faculty findFirstOrThrow
+   */
+  export type FacultyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faculty
+     */
+    select?: FacultySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faculty
+     */
+    omit?: FacultyOmit<ExtArgs> | null
+    /**
+     * Filter, which Faculty to fetch.
+     */
+    where?: FacultyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Faculties to fetch.
+     */
+    orderBy?: FacultyOrderByWithRelationInput | FacultyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Faculties.
+     */
+    cursor?: FacultyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Faculties from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Faculties.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Faculties.
+     */
+    distinct?: FacultyScalarFieldEnum | FacultyScalarFieldEnum[]
+  }
+
+  /**
+   * Faculty findMany
+   */
+  export type FacultyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faculty
+     */
+    select?: FacultySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faculty
+     */
+    omit?: FacultyOmit<ExtArgs> | null
+    /**
+     * Filter, which Faculties to fetch.
+     */
+    where?: FacultyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Faculties to fetch.
+     */
+    orderBy?: FacultyOrderByWithRelationInput | FacultyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Faculties.
+     */
+    cursor?: FacultyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Faculties from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Faculties.
+     */
+    skip?: number
+    distinct?: FacultyScalarFieldEnum | FacultyScalarFieldEnum[]
+  }
+
+  /**
+   * Faculty create
+   */
+  export type FacultyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faculty
+     */
+    select?: FacultySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faculty
+     */
+    omit?: FacultyOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Faculty.
+     */
+    data: XOR<FacultyCreateInput, FacultyUncheckedCreateInput>
+  }
+
+  /**
+   * Faculty createMany
+   */
+  export type FacultyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Faculties.
+     */
+    data: FacultyCreateManyInput | FacultyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Faculty createManyAndReturn
+   */
+  export type FacultyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faculty
+     */
+    select?: FacultySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faculty
+     */
+    omit?: FacultyOmit<ExtArgs> | null
+    /**
+     * The data used to create many Faculties.
+     */
+    data: FacultyCreateManyInput | FacultyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Faculty update
+   */
+  export type FacultyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faculty
+     */
+    select?: FacultySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faculty
+     */
+    omit?: FacultyOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Faculty.
+     */
+    data: XOR<FacultyUpdateInput, FacultyUncheckedUpdateInput>
+    /**
+     * Choose, which Faculty to update.
+     */
+    where: FacultyWhereUniqueInput
+  }
+
+  /**
+   * Faculty updateMany
+   */
+  export type FacultyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Faculties.
+     */
+    data: XOR<FacultyUpdateManyMutationInput, FacultyUncheckedUpdateManyInput>
+    /**
+     * Filter which Faculties to update
+     */
+    where?: FacultyWhereInput
+    /**
+     * Limit how many Faculties to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Faculty updateManyAndReturn
+   */
+  export type FacultyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faculty
+     */
+    select?: FacultySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faculty
+     */
+    omit?: FacultyOmit<ExtArgs> | null
+    /**
+     * The data used to update Faculties.
+     */
+    data: XOR<FacultyUpdateManyMutationInput, FacultyUncheckedUpdateManyInput>
+    /**
+     * Filter which Faculties to update
+     */
+    where?: FacultyWhereInput
+    /**
+     * Limit how many Faculties to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Faculty upsert
+   */
+  export type FacultyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faculty
+     */
+    select?: FacultySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faculty
+     */
+    omit?: FacultyOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Faculty to update in case it exists.
+     */
+    where: FacultyWhereUniqueInput
+    /**
+     * In case the Faculty found by the `where` argument doesn't exist, create a new Faculty with this data.
+     */
+    create: XOR<FacultyCreateInput, FacultyUncheckedCreateInput>
+    /**
+     * In case the Faculty was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FacultyUpdateInput, FacultyUncheckedUpdateInput>
+  }
+
+  /**
+   * Faculty delete
+   */
+  export type FacultyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faculty
+     */
+    select?: FacultySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faculty
+     */
+    omit?: FacultyOmit<ExtArgs> | null
+    /**
+     * Filter which Faculty to delete.
+     */
+    where: FacultyWhereUniqueInput
+  }
+
+  /**
+   * Faculty deleteMany
+   */
+  export type FacultyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Faculties to delete
+     */
+    where?: FacultyWhereInput
+    /**
+     * Limit how many Faculties to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Faculty without action
+   */
+  export type FacultyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faculty
+     */
+    select?: FacultySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faculty
+     */
+    omit?: FacultyOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Batch
+   */
+
+  export type AggregateBatch = {
+    _count: BatchCountAggregateOutputType | null
+    _avg: BatchAvgAggregateOutputType | null
+    _sum: BatchSumAggregateOutputType | null
+    _min: BatchMinAggregateOutputType | null
+    _max: BatchMaxAggregateOutputType | null
+  }
+
+  export type BatchAvgAggregateOutputType = {
+    price: number | null
+  }
+
+  export type BatchSumAggregateOutputType = {
+    price: number | null
+  }
+
+  export type BatchMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    category: $Enums.Category | null
+    level: $Enums.Level | null
+    description: string | null
+    startDate: Date | null
+    endDate: Date | null
+    price: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BatchMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    category: $Enums.Category | null
+    level: $Enums.Level | null
+    description: string | null
+    startDate: Date | null
+    endDate: Date | null
+    price: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BatchCountAggregateOutputType = {
+    id: number
+    name: number
+    category: number
+    level: number
+    description: number
+    startDate: number
+    endDate: number
+    price: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BatchAvgAggregateInputType = {
+    price?: true
+  }
+
+  export type BatchSumAggregateInputType = {
+    price?: true
+  }
+
+  export type BatchMinAggregateInputType = {
+    id?: true
+    name?: true
+    category?: true
+    level?: true
+    description?: true
+    startDate?: true
+    endDate?: true
+    price?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BatchMaxAggregateInputType = {
+    id?: true
+    name?: true
+    category?: true
+    level?: true
+    description?: true
+    startDate?: true
+    endDate?: true
+    price?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BatchCountAggregateInputType = {
+    id?: true
+    name?: true
+    category?: true
+    level?: true
+    description?: true
+    startDate?: true
+    endDate?: true
+    price?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BatchAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Batch to aggregate.
+     */
+    where?: BatchWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Batches to fetch.
+     */
+    orderBy?: BatchOrderByWithRelationInput | BatchOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BatchWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Batches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Batches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Batches
+    **/
+    _count?: true | BatchCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BatchAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BatchSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BatchMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BatchMaxAggregateInputType
+  }
+
+  export type GetBatchAggregateType<T extends BatchAggregateArgs> = {
+        [P in keyof T & keyof AggregateBatch]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBatch[P]>
+      : GetScalarType<T[P], AggregateBatch[P]>
+  }
+
+
+
+
+  export type BatchGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BatchWhereInput
+    orderBy?: BatchOrderByWithAggregationInput | BatchOrderByWithAggregationInput[]
+    by: BatchScalarFieldEnum[] | BatchScalarFieldEnum
+    having?: BatchScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BatchCountAggregateInputType | true
+    _avg?: BatchAvgAggregateInputType
+    _sum?: BatchSumAggregateInputType
+    _min?: BatchMinAggregateInputType
+    _max?: BatchMaxAggregateInputType
+  }
+
+  export type BatchGroupByOutputType = {
+    id: string
+    name: string
+    category: $Enums.Category
+    level: $Enums.Level
+    description: string | null
+    startDate: Date
+    endDate: Date | null
+    price: number
+    createdAt: Date
+    updatedAt: Date
+    _count: BatchCountAggregateOutputType | null
+    _avg: BatchAvgAggregateOutputType | null
+    _sum: BatchSumAggregateOutputType | null
+    _min: BatchMinAggregateOutputType | null
+    _max: BatchMaxAggregateOutputType | null
+  }
+
+  type GetBatchGroupByPayload<T extends BatchGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BatchGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BatchGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BatchGroupByOutputType[P]>
+            : GetScalarType<T[P], BatchGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BatchSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    category?: boolean
+    level?: boolean
+    description?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    price?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["batch"]>
+
+  export type BatchSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    category?: boolean
+    level?: boolean
+    description?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    price?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["batch"]>
+
+  export type BatchSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    category?: boolean
+    level?: boolean
+    description?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    price?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["batch"]>
+
+  export type BatchSelectScalar = {
+    id?: boolean
+    name?: boolean
+    category?: boolean
+    level?: boolean
+    description?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    price?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BatchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "level" | "description" | "startDate" | "endDate" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["batch"]>
+
+  export type $BatchPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Batch"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      category: $Enums.Category
+      level: $Enums.Level
+      description: string | null
+      startDate: Date
+      endDate: Date | null
+      price: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["batch"]>
+    composites: {}
+  }
+
+  type BatchGetPayload<S extends boolean | null | undefined | BatchDefaultArgs> = $Result.GetResult<Prisma.$BatchPayload, S>
+
+  type BatchCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BatchFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BatchCountAggregateInputType | true
+    }
+
+  export interface BatchDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Batch'], meta: { name: 'Batch' } }
+    /**
+     * Find zero or one Batch that matches the filter.
+     * @param {BatchFindUniqueArgs} args - Arguments to find a Batch
+     * @example
+     * // Get one Batch
+     * const batch = await prisma.batch.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BatchFindUniqueArgs>(args: SelectSubset<T, BatchFindUniqueArgs<ExtArgs>>): Prisma__BatchClient<$Result.GetResult<Prisma.$BatchPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Batch that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BatchFindUniqueOrThrowArgs} args - Arguments to find a Batch
+     * @example
+     * // Get one Batch
+     * const batch = await prisma.batch.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BatchFindUniqueOrThrowArgs>(args: SelectSubset<T, BatchFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BatchClient<$Result.GetResult<Prisma.$BatchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Batch that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchFindFirstArgs} args - Arguments to find a Batch
+     * @example
+     * // Get one Batch
+     * const batch = await prisma.batch.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BatchFindFirstArgs>(args?: SelectSubset<T, BatchFindFirstArgs<ExtArgs>>): Prisma__BatchClient<$Result.GetResult<Prisma.$BatchPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Batch that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchFindFirstOrThrowArgs} args - Arguments to find a Batch
+     * @example
+     * // Get one Batch
+     * const batch = await prisma.batch.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BatchFindFirstOrThrowArgs>(args?: SelectSubset<T, BatchFindFirstOrThrowArgs<ExtArgs>>): Prisma__BatchClient<$Result.GetResult<Prisma.$BatchPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Batches that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Batches
+     * const batches = await prisma.batch.findMany()
+     * 
+     * // Get first 10 Batches
+     * const batches = await prisma.batch.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const batchWithIdOnly = await prisma.batch.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BatchFindManyArgs>(args?: SelectSubset<T, BatchFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Batch.
+     * @param {BatchCreateArgs} args - Arguments to create a Batch.
+     * @example
+     * // Create one Batch
+     * const Batch = await prisma.batch.create({
+     *   data: {
+     *     // ... data to create a Batch
+     *   }
+     * })
+     * 
+     */
+    create<T extends BatchCreateArgs>(args: SelectSubset<T, BatchCreateArgs<ExtArgs>>): Prisma__BatchClient<$Result.GetResult<Prisma.$BatchPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Batches.
+     * @param {BatchCreateManyArgs} args - Arguments to create many Batches.
+     * @example
+     * // Create many Batches
+     * const batch = await prisma.batch.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BatchCreateManyArgs>(args?: SelectSubset<T, BatchCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Batches and returns the data saved in the database.
+     * @param {BatchCreateManyAndReturnArgs} args - Arguments to create many Batches.
+     * @example
+     * // Create many Batches
+     * const batch = await prisma.batch.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Batches and only return the `id`
+     * const batchWithIdOnly = await prisma.batch.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BatchCreateManyAndReturnArgs>(args?: SelectSubset<T, BatchCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BatchPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Batch.
+     * @param {BatchDeleteArgs} args - Arguments to delete one Batch.
+     * @example
+     * // Delete one Batch
+     * const Batch = await prisma.batch.delete({
+     *   where: {
+     *     // ... filter to delete one Batch
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BatchDeleteArgs>(args: SelectSubset<T, BatchDeleteArgs<ExtArgs>>): Prisma__BatchClient<$Result.GetResult<Prisma.$BatchPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Batch.
+     * @param {BatchUpdateArgs} args - Arguments to update one Batch.
+     * @example
+     * // Update one Batch
+     * const batch = await prisma.batch.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BatchUpdateArgs>(args: SelectSubset<T, BatchUpdateArgs<ExtArgs>>): Prisma__BatchClient<$Result.GetResult<Prisma.$BatchPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Batches.
+     * @param {BatchDeleteManyArgs} args - Arguments to filter Batches to delete.
+     * @example
+     * // Delete a few Batches
+     * const { count } = await prisma.batch.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BatchDeleteManyArgs>(args?: SelectSubset<T, BatchDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Batches.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Batches
+     * const batch = await prisma.batch.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BatchUpdateManyArgs>(args: SelectSubset<T, BatchUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Batches and returns the data updated in the database.
+     * @param {BatchUpdateManyAndReturnArgs} args - Arguments to update many Batches.
+     * @example
+     * // Update many Batches
+     * const batch = await prisma.batch.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Batches and only return the `id`
+     * const batchWithIdOnly = await prisma.batch.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BatchUpdateManyAndReturnArgs>(args: SelectSubset<T, BatchUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BatchPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Batch.
+     * @param {BatchUpsertArgs} args - Arguments to update or create a Batch.
+     * @example
+     * // Update or create a Batch
+     * const batch = await prisma.batch.upsert({
+     *   create: {
+     *     // ... data to create a Batch
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Batch we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BatchUpsertArgs>(args: SelectSubset<T, BatchUpsertArgs<ExtArgs>>): Prisma__BatchClient<$Result.GetResult<Prisma.$BatchPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Batches.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchCountArgs} args - Arguments to filter Batches to count.
+     * @example
+     * // Count the number of Batches
+     * const count = await prisma.batch.count({
+     *   where: {
+     *     // ... the filter for the Batches we want to count
+     *   }
+     * })
+    **/
+    count<T extends BatchCountArgs>(
+      args?: Subset<T, BatchCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BatchCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Batch.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BatchAggregateArgs>(args: Subset<T, BatchAggregateArgs>): Prisma.PrismaPromise<GetBatchAggregateType<T>>
+
+    /**
+     * Group by Batch.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BatchGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BatchGroupByArgs['orderBy'] }
+        : { orderBy?: BatchGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BatchGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBatchGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Batch model
+   */
+  readonly fields: BatchFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Batch.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BatchClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Batch model
+   */
+  interface BatchFieldRefs {
+    readonly id: FieldRef<"Batch", 'String'>
+    readonly name: FieldRef<"Batch", 'String'>
+    readonly category: FieldRef<"Batch", 'Category'>
+    readonly level: FieldRef<"Batch", 'Level'>
+    readonly description: FieldRef<"Batch", 'String'>
+    readonly startDate: FieldRef<"Batch", 'DateTime'>
+    readonly endDate: FieldRef<"Batch", 'DateTime'>
+    readonly price: FieldRef<"Batch", 'Int'>
+    readonly createdAt: FieldRef<"Batch", 'DateTime'>
+    readonly updatedAt: FieldRef<"Batch", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Batch findUnique
+   */
+  export type BatchFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Batch
+     */
+    select?: BatchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Batch
+     */
+    omit?: BatchOmit<ExtArgs> | null
+    /**
+     * Filter, which Batch to fetch.
+     */
+    where: BatchWhereUniqueInput
+  }
+
+  /**
+   * Batch findUniqueOrThrow
+   */
+  export type BatchFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Batch
+     */
+    select?: BatchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Batch
+     */
+    omit?: BatchOmit<ExtArgs> | null
+    /**
+     * Filter, which Batch to fetch.
+     */
+    where: BatchWhereUniqueInput
+  }
+
+  /**
+   * Batch findFirst
+   */
+  export type BatchFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Batch
+     */
+    select?: BatchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Batch
+     */
+    omit?: BatchOmit<ExtArgs> | null
+    /**
+     * Filter, which Batch to fetch.
+     */
+    where?: BatchWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Batches to fetch.
+     */
+    orderBy?: BatchOrderByWithRelationInput | BatchOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Batches.
+     */
+    cursor?: BatchWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Batches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Batches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Batches.
+     */
+    distinct?: BatchScalarFieldEnum | BatchScalarFieldEnum[]
+  }
+
+  /**
+   * Batch findFirstOrThrow
+   */
+  export type BatchFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Batch
+     */
+    select?: BatchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Batch
+     */
+    omit?: BatchOmit<ExtArgs> | null
+    /**
+     * Filter, which Batch to fetch.
+     */
+    where?: BatchWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Batches to fetch.
+     */
+    orderBy?: BatchOrderByWithRelationInput | BatchOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Batches.
+     */
+    cursor?: BatchWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Batches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Batches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Batches.
+     */
+    distinct?: BatchScalarFieldEnum | BatchScalarFieldEnum[]
+  }
+
+  /**
+   * Batch findMany
+   */
+  export type BatchFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Batch
+     */
+    select?: BatchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Batch
+     */
+    omit?: BatchOmit<ExtArgs> | null
+    /**
+     * Filter, which Batches to fetch.
+     */
+    where?: BatchWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Batches to fetch.
+     */
+    orderBy?: BatchOrderByWithRelationInput | BatchOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Batches.
+     */
+    cursor?: BatchWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Batches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Batches.
+     */
+    skip?: number
+    distinct?: BatchScalarFieldEnum | BatchScalarFieldEnum[]
+  }
+
+  /**
+   * Batch create
+   */
+  export type BatchCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Batch
+     */
+    select?: BatchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Batch
+     */
+    omit?: BatchOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Batch.
+     */
+    data: XOR<BatchCreateInput, BatchUncheckedCreateInput>
+  }
+
+  /**
+   * Batch createMany
+   */
+  export type BatchCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Batches.
+     */
+    data: BatchCreateManyInput | BatchCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Batch createManyAndReturn
+   */
+  export type BatchCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Batch
+     */
+    select?: BatchSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Batch
+     */
+    omit?: BatchOmit<ExtArgs> | null
+    /**
+     * The data used to create many Batches.
+     */
+    data: BatchCreateManyInput | BatchCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Batch update
+   */
+  export type BatchUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Batch
+     */
+    select?: BatchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Batch
+     */
+    omit?: BatchOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Batch.
+     */
+    data: XOR<BatchUpdateInput, BatchUncheckedUpdateInput>
+    /**
+     * Choose, which Batch to update.
+     */
+    where: BatchWhereUniqueInput
+  }
+
+  /**
+   * Batch updateMany
+   */
+  export type BatchUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Batches.
+     */
+    data: XOR<BatchUpdateManyMutationInput, BatchUncheckedUpdateManyInput>
+    /**
+     * Filter which Batches to update
+     */
+    where?: BatchWhereInput
+    /**
+     * Limit how many Batches to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Batch updateManyAndReturn
+   */
+  export type BatchUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Batch
+     */
+    select?: BatchSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Batch
+     */
+    omit?: BatchOmit<ExtArgs> | null
+    /**
+     * The data used to update Batches.
+     */
+    data: XOR<BatchUpdateManyMutationInput, BatchUncheckedUpdateManyInput>
+    /**
+     * Filter which Batches to update
+     */
+    where?: BatchWhereInput
+    /**
+     * Limit how many Batches to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Batch upsert
+   */
+  export type BatchUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Batch
+     */
+    select?: BatchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Batch
+     */
+    omit?: BatchOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Batch to update in case it exists.
+     */
+    where: BatchWhereUniqueInput
+    /**
+     * In case the Batch found by the `where` argument doesn't exist, create a new Batch with this data.
+     */
+    create: XOR<BatchCreateInput, BatchUncheckedCreateInput>
+    /**
+     * In case the Batch was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BatchUpdateInput, BatchUncheckedUpdateInput>
+  }
+
+  /**
+   * Batch delete
+   */
+  export type BatchDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Batch
+     */
+    select?: BatchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Batch
+     */
+    omit?: BatchOmit<ExtArgs> | null
+    /**
+     * Filter which Batch to delete.
+     */
+    where: BatchWhereUniqueInput
+  }
+
+  /**
+   * Batch deleteMany
+   */
+  export type BatchDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Batches to delete
+     */
+    where?: BatchWhereInput
+    /**
+     * Limit how many Batches to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Batch without action
+   */
+  export type BatchDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Batch
+     */
+    select?: BatchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Batch
+     */
+    omit?: BatchOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -1953,6 +4306,34 @@ export namespace Prisma {
   };
 
   export type TopperScalarFieldEnum = (typeof TopperScalarFieldEnum)[keyof typeof TopperScalarFieldEnum]
+
+
+  export const FacultyScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    subject: 'subject',
+    experience: 'experience',
+    bio: 'bio',
+    avatar: 'avatar'
+  };
+
+  export type FacultyScalarFieldEnum = (typeof FacultyScalarFieldEnum)[keyof typeof FacultyScalarFieldEnum]
+
+
+  export const BatchScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    category: 'category',
+    level: 'level',
+    description: 'description',
+    startDate: 'startDate',
+    endDate: 'endDate',
+    price: 'price',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BatchScalarFieldEnum = (typeof BatchScalarFieldEnum)[keyof typeof BatchScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -2009,6 +4390,48 @@ export namespace Prisma {
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Category'
+   */
+  export type EnumCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Category'>
+    
+
+
+  /**
+   * Reference to a field of type 'Category[]'
+   */
+  export type ListEnumCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Category[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Level'
+   */
+  export type EnumLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Level'>
+    
+
+
+  /**
+   * Reference to a field of type 'Level[]'
+   */
+  export type ListEnumLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Level[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -2093,6 +4516,144 @@ export namespace Prisma {
     exam?: StringWithAggregatesFilter<"Topper"> | string
   }
 
+  export type FacultyWhereInput = {
+    AND?: FacultyWhereInput | FacultyWhereInput[]
+    OR?: FacultyWhereInput[]
+    NOT?: FacultyWhereInput | FacultyWhereInput[]
+    id?: IntFilter<"Faculty"> | number
+    name?: StringFilter<"Faculty"> | string
+    subject?: StringFilter<"Faculty"> | string
+    experience?: IntFilter<"Faculty"> | number
+    bio?: StringFilter<"Faculty"> | string
+    avatar?: StringFilter<"Faculty"> | string
+  }
+
+  export type FacultyOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    subject?: SortOrder
+    experience?: SortOrder
+    bio?: SortOrder
+    avatar?: SortOrder
+  }
+
+  export type FacultyWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: FacultyWhereInput | FacultyWhereInput[]
+    OR?: FacultyWhereInput[]
+    NOT?: FacultyWhereInput | FacultyWhereInput[]
+    name?: StringFilter<"Faculty"> | string
+    subject?: StringFilter<"Faculty"> | string
+    experience?: IntFilter<"Faculty"> | number
+    bio?: StringFilter<"Faculty"> | string
+    avatar?: StringFilter<"Faculty"> | string
+  }, "id">
+
+  export type FacultyOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    subject?: SortOrder
+    experience?: SortOrder
+    bio?: SortOrder
+    avatar?: SortOrder
+    _count?: FacultyCountOrderByAggregateInput
+    _avg?: FacultyAvgOrderByAggregateInput
+    _max?: FacultyMaxOrderByAggregateInput
+    _min?: FacultyMinOrderByAggregateInput
+    _sum?: FacultySumOrderByAggregateInput
+  }
+
+  export type FacultyScalarWhereWithAggregatesInput = {
+    AND?: FacultyScalarWhereWithAggregatesInput | FacultyScalarWhereWithAggregatesInput[]
+    OR?: FacultyScalarWhereWithAggregatesInput[]
+    NOT?: FacultyScalarWhereWithAggregatesInput | FacultyScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Faculty"> | number
+    name?: StringWithAggregatesFilter<"Faculty"> | string
+    subject?: StringWithAggregatesFilter<"Faculty"> | string
+    experience?: IntWithAggregatesFilter<"Faculty"> | number
+    bio?: StringWithAggregatesFilter<"Faculty"> | string
+    avatar?: StringWithAggregatesFilter<"Faculty"> | string
+  }
+
+  export type BatchWhereInput = {
+    AND?: BatchWhereInput | BatchWhereInput[]
+    OR?: BatchWhereInput[]
+    NOT?: BatchWhereInput | BatchWhereInput[]
+    id?: StringFilter<"Batch"> | string
+    name?: StringFilter<"Batch"> | string
+    category?: EnumCategoryFilter<"Batch"> | $Enums.Category
+    level?: EnumLevelFilter<"Batch"> | $Enums.Level
+    description?: StringNullableFilter<"Batch"> | string | null
+    startDate?: DateTimeFilter<"Batch"> | Date | string
+    endDate?: DateTimeNullableFilter<"Batch"> | Date | string | null
+    price?: IntFilter<"Batch"> | number
+    createdAt?: DateTimeFilter<"Batch"> | Date | string
+    updatedAt?: DateTimeFilter<"Batch"> | Date | string
+  }
+
+  export type BatchOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    category?: SortOrder
+    level?: SortOrder
+    description?: SortOrderInput | SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrderInput | SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BatchWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BatchWhereInput | BatchWhereInput[]
+    OR?: BatchWhereInput[]
+    NOT?: BatchWhereInput | BatchWhereInput[]
+    name?: StringFilter<"Batch"> | string
+    category?: EnumCategoryFilter<"Batch"> | $Enums.Category
+    level?: EnumLevelFilter<"Batch"> | $Enums.Level
+    description?: StringNullableFilter<"Batch"> | string | null
+    startDate?: DateTimeFilter<"Batch"> | Date | string
+    endDate?: DateTimeNullableFilter<"Batch"> | Date | string | null
+    price?: IntFilter<"Batch"> | number
+    createdAt?: DateTimeFilter<"Batch"> | Date | string
+    updatedAt?: DateTimeFilter<"Batch"> | Date | string
+  }, "id">
+
+  export type BatchOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    category?: SortOrder
+    level?: SortOrder
+    description?: SortOrderInput | SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrderInput | SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BatchCountOrderByAggregateInput
+    _avg?: BatchAvgOrderByAggregateInput
+    _max?: BatchMaxOrderByAggregateInput
+    _min?: BatchMinOrderByAggregateInput
+    _sum?: BatchSumOrderByAggregateInput
+  }
+
+  export type BatchScalarWhereWithAggregatesInput = {
+    AND?: BatchScalarWhereWithAggregatesInput | BatchScalarWhereWithAggregatesInput[]
+    OR?: BatchScalarWhereWithAggregatesInput[]
+    NOT?: BatchScalarWhereWithAggregatesInput | BatchScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Batch"> | string
+    name?: StringWithAggregatesFilter<"Batch"> | string
+    category?: EnumCategoryWithAggregatesFilter<"Batch"> | $Enums.Category
+    level?: EnumLevelWithAggregatesFilter<"Batch"> | $Enums.Level
+    description?: StringNullableWithAggregatesFilter<"Batch"> | string | null
+    startDate?: DateTimeWithAggregatesFilter<"Batch"> | Date | string
+    endDate?: DateTimeNullableWithAggregatesFilter<"Batch"> | Date | string | null
+    price?: IntWithAggregatesFilter<"Batch"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Batch"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Batch"> | Date | string
+  }
+
   export type TopperCreateInput = {
     name: string
     rank?: string | null
@@ -2158,6 +4719,157 @@ export namespace Prisma {
     avatar?: StringFieldUpdateOperationsInput | string
     batch?: IntFieldUpdateOperationsInput | number
     exam?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FacultyCreateInput = {
+    name: string
+    subject: string
+    experience: number
+    bio: string
+    avatar: string
+  }
+
+  export type FacultyUncheckedCreateInput = {
+    id?: number
+    name: string
+    subject: string
+    experience: number
+    bio: string
+    avatar: string
+  }
+
+  export type FacultyUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
+    experience?: IntFieldUpdateOperationsInput | number
+    bio?: StringFieldUpdateOperationsInput | string
+    avatar?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FacultyUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
+    experience?: IntFieldUpdateOperationsInput | number
+    bio?: StringFieldUpdateOperationsInput | string
+    avatar?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FacultyCreateManyInput = {
+    id?: number
+    name: string
+    subject: string
+    experience: number
+    bio: string
+    avatar: string
+  }
+
+  export type FacultyUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
+    experience?: IntFieldUpdateOperationsInput | number
+    bio?: StringFieldUpdateOperationsInput | string
+    avatar?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FacultyUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
+    experience?: IntFieldUpdateOperationsInput | number
+    bio?: StringFieldUpdateOperationsInput | string
+    avatar?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BatchCreateInput = {
+    id?: string
+    name: string
+    category: $Enums.Category
+    level: $Enums.Level
+    description?: string | null
+    startDate: Date | string
+    endDate?: Date | string | null
+    price: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BatchUncheckedCreateInput = {
+    id?: string
+    name: string
+    category: $Enums.Category
+    level: $Enums.Level
+    description?: string | null
+    startDate: Date | string
+    endDate?: Date | string | null
+    price: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BatchUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    level?: EnumLevelFieldUpdateOperationsInput | $Enums.Level
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BatchUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    level?: EnumLevelFieldUpdateOperationsInput | $Enums.Level
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BatchCreateManyInput = {
+    id?: string
+    name: string
+    category: $Enums.Category
+    level: $Enums.Level
+    description?: string | null
+    startDate: Date | string
+    endDate?: Date | string | null
+    price: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BatchUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    level?: EnumLevelFieldUpdateOperationsInput | $Enums.Level
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BatchUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    level?: EnumLevelFieldUpdateOperationsInput | $Enums.Level
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    price?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2298,6 +5010,174 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type FacultyCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    subject?: SortOrder
+    experience?: SortOrder
+    bio?: SortOrder
+    avatar?: SortOrder
+  }
+
+  export type FacultyAvgOrderByAggregateInput = {
+    id?: SortOrder
+    experience?: SortOrder
+  }
+
+  export type FacultyMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    subject?: SortOrder
+    experience?: SortOrder
+    bio?: SortOrder
+    avatar?: SortOrder
+  }
+
+  export type FacultyMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    subject?: SortOrder
+    experience?: SortOrder
+    bio?: SortOrder
+    avatar?: SortOrder
+  }
+
+  export type FacultySumOrderByAggregateInput = {
+    id?: SortOrder
+    experience?: SortOrder
+  }
+
+  export type EnumCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.Category | EnumCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumCategoryFilter<$PrismaModel> | $Enums.Category
+  }
+
+  export type EnumLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.Level | EnumLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.Level[] | ListEnumLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Level[] | ListEnumLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumLevelFilter<$PrismaModel> | $Enums.Level
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type BatchCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    category?: SortOrder
+    level?: SortOrder
+    description?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BatchAvgOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type BatchMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    category?: SortOrder
+    level?: SortOrder
+    description?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BatchMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    category?: SortOrder
+    level?: SortOrder
+    description?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BatchSumOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type EnumCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Category | EnumCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumCategoryWithAggregatesFilter<$PrismaModel> | $Enums.Category
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCategoryFilter<$PrismaModel>
+    _max?: NestedEnumCategoryFilter<$PrismaModel>
+  }
+
+  export type EnumLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Level | EnumLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.Level[] | ListEnumLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Level[] | ListEnumLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumLevelWithAggregatesFilter<$PrismaModel> | $Enums.Level
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLevelFilter<$PrismaModel>
+    _max?: NestedEnumLevelFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2312,6 +5192,22 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type EnumCategoryFieldUpdateOperationsInput = {
+    set?: $Enums.Category
+  }
+
+  export type EnumLevelFieldUpdateOperationsInput = {
+    set?: $Enums.Level
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -2423,6 +5319,90 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.Category | EnumCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumCategoryFilter<$PrismaModel> | $Enums.Category
+  }
+
+  export type NestedEnumLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.Level | EnumLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.Level[] | ListEnumLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Level[] | ListEnumLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumLevelFilter<$PrismaModel> | $Enums.Level
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedEnumCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Category | EnumCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumCategoryWithAggregatesFilter<$PrismaModel> | $Enums.Category
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCategoryFilter<$PrismaModel>
+    _max?: NestedEnumCategoryFilter<$PrismaModel>
+  }
+
+  export type NestedEnumLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Level | EnumLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.Level[] | ListEnumLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Level[] | ListEnumLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumLevelWithAggregatesFilter<$PrismaModel> | $Enums.Level
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLevelFilter<$PrismaModel>
+    _max?: NestedEnumLevelFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
 

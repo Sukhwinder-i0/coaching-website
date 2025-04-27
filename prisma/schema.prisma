@@ -17,3 +17,38 @@ model Topper {
   batch Int
   exam String
 }
+
+model Faculty {
+  id         Int @id @default(autoincrement())
+  name       String
+  subject    String
+  experience Int
+  bio        String
+  avatar     String
+}
+
+model Batch {
+  id          String    @id @default(uuid())
+  name        String
+  category    Category
+  level       Level
+  description String?
+  startDate   DateTime
+  endDate     DateTime?
+  price       Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+}
+
+enum Category {
+  JEE
+  NEET
+}
+
+enum Level {
+  IX
+  X
+  XI
+  XII
+}
