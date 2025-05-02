@@ -4,6 +4,7 @@ import Card from "@/components/Card";
 import { BannerCarousel } from "@/components/Carousel/BannerCarousel";
 import { ToppersCarousel } from "@/components/Carousel/ToppersCarousel";
 import Heading from "@/components/Heading";
+import LoginPopup from "@/components/LoginPopup";
 import { Award, LineChart, University } from "lucide-react";
 import { MessageCircle } from 'lucide-react'
 import { ListChecks } from 'lucide-react'
@@ -48,6 +49,8 @@ export default function Home() {
           <Heading title="Meet Our Proud Achievers" />
           <ToppersCarousel />
         </div>
+
+        
     </div>
     </div>
 
