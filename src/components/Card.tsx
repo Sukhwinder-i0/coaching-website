@@ -1,3 +1,5 @@
+'use client'
+
 import React, { JSX, ReactElement } from 'react'
 
 interface CardProps {
@@ -16,12 +18,13 @@ interface CardProps {
   logo?: string
   className?: string
   icon?: ReactElement
+  onClick?: () => void
 }
 
 const Card: React.FC<CardProps> = (props) => {
   if (props.type === 'topper') {
     return (
-      <div className={`${props.className} w-2/3 flex flex-col items-center justify-around py-8 px-4 bg-slate-900 rounded-2xl h-auto border-2 border-blue-400 shadow-lg shadow-blue-400`}>
+      <div onClick={props.onClick} className={`${props.className} w-2/3 flex flex-col items-center justify-around py-8 px-4 bg-slate-900 rounded-2xl h-auto border-2 border-blue-400 shadow-lg shadow-blue-400`}>
         <div className='flex w-full justify-center items-center flex-col pb-6'>
           <img className='w-40 rounded-full h-40 mb-4 border content-overflow' src={props.imageUrl} alt={props.alt} />
           <div className='text-lg bg-slate-700 px-4 py-2 flex justify-center capitalize rounded-md'>
@@ -39,7 +42,7 @@ const Card: React.FC<CardProps> = (props) => {
 
   if (props.type === 'faculty') {
     return (
-      <div className='rounded-3xl bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 w-full max-w-lg shadow-md p-6 flex flex-col md:flex-row gap-6 items-center hover:shadow-blue-500/40 transition duration-300 ease-in-out hover:scale-105 border-2 border-blue-500'>
+      <div onClick={props.onClick} className='rounded-3xl bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 w-full max-w-lg shadow-md p-6 flex flex-col md:flex-row gap-6 items-center hover:shadow-blue-500/40 transition duration-300 ease-in-out hover:scale-105 border-2 border-blue-500'>
         <div className='w-28 h-28 rounded-full overflow-hidden border-2 border-blue-500'>
           <img src={props.imageUrl} alt={props.alt} className='w-full h-full object-cover' />
         </div>
@@ -55,7 +58,7 @@ const Card: React.FC<CardProps> = (props) => {
 
   if (props.type === 'feature') {
     return (
-      <div className='rounded-lg bg-slate-900 w-full max-w-sm text-center p-6 shadow-lg shadow-blue-600/30 flex flex-col items-center hover:scale-105 transition-all duration-300 ease-in-out'>
+      <div onClick={props.onClick} className={`${props.className} rounded-lg bg-slate-900 w-full max-w-sm text-center p-6 shadow-lg shadow-blue-600/30 flex flex-col items-center hover:scale-105 transition-all duration-300 ease-in-out`} >
         <div className='mb-4  flex justify-center items-center '>
           {props.icon}
         </div>
