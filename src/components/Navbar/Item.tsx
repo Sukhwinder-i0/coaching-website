@@ -11,18 +11,18 @@ interface ItemProps {
   className?: string
 }
 
-const Item = (props: ItemProps) => {
+const Item = ({ text, href, isActive, className }: ItemProps) => {
   return (
-    <Link href={props.href} prefetch={true}>
-      <button
+    <Link href={href} prefetch>
+      <div
         className={clsx(
           'py-3 px-5 rounded-sm cursor-pointer transition duration-200 hover:bg-gray-800',
-          props.isActive ? 'bg-gray-700 text-white' : 'text-gray-300',
-          props.className
+          isActive ? 'bg-gray-700 text-white' : 'text-gray-300',
+          className
         )}
       >
-        {props.text}
-      </button>
+        {text}
+      </div>
     </Link>
   )
 }
