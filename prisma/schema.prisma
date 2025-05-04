@@ -8,6 +8,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum userType {
+  admin
+  Faculty
+  student
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  type userType
+  email String
+  password String
+}
+
 model Topper {
   id    Int     @id @default(autoincrement())
   name String  
