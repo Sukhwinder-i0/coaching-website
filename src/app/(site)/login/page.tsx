@@ -1,14 +1,14 @@
 'use client'
 
 import React, { useState } from 'react';
-import InputBox from './InputBox';
-import SelectBox from './SelectBox';
 import { LuLogIn, LuUserPlus } from 'react-icons/lu'; 
-import Button from './Button'; 
 import { useModalOpen } from '@/store/useModalStore';
 import { ImCross } from 'react-icons/im';
 import { RxCross2 } from 'react-icons/rx';
 import { IoClose } from 'react-icons/io5';
+import InputBox from '@/components/InputBox';
+import SelectBox from '@/components/SelectBox';
+import Button from '@/components/Button';
 
 
 
