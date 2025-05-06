@@ -3,7 +3,6 @@
 import { ReactNode, useState } from "react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
-import LoginPopup from "@/components/LoginPopup";
 import '../globals.css'
 import { useAdmin } from "@/store/useAdminStore";
 
@@ -18,7 +17,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-[sans] bg-gradient-to-r from-slate-700 to-slate-800">
-        <LoginPopup />
         <Navbar />
         <main className="min-h-screen">
           {children}

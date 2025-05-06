@@ -9,7 +9,6 @@ const topperData: Prisma.TopperCreateInput[] = [
     exam: 'jee advanced',
     avatar: 'public/',
     batch: 2022,
-    // percentage is optional
   }
 ]
 

@@ -1,12 +1,11 @@
 'use client'
 
 import React from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Item from './Item';
 import Logo from './Logo';
 import Button from '../Button';
 import { LuLogIn } from 'react-icons/lu';
-import LoginPopup from '../LoginPopup';
 import { useModalOpen } from '@/store/useModalStore';
 import { useAdmin } from '@/store/useAdminStore';
 
@@ -21,6 +20,8 @@ const Navbar = () => {
   const { isModalOpen, toggleModalOpen } = useModalOpen();
   const { isAdmin } = useAdmin();
   const pathname = usePathname();
+
+  const router =  useRouter()
 
   return (
     <>
@@ -39,11 +40,11 @@ const Navbar = () => {
                 isActive={pathname === item.path}
               />
             ))}
-            <Button text="Login" icon={<LuLogIn />} onClick={toggleModalOpen} /> 
+            <Button text="Login" icon={<LuLogIn />} onClick={() => router.push('/login')} /> 
         </div>
       </nav>
 
-      {isModalOpen && <LoginPopup />}
+      
     </>
   );
 };

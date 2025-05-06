@@ -1,5 +1,4 @@
 import { NextAuthOptions } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
 import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "./prisma";
 import bcrypt from 'bcrypt'
@@ -9,68 +8,65 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: {label: "Email", type: "text"},
-        password: {label: "Password", type: "password"}
-      }, 
-      async authorize (credentials) {
-
-        if(!credentials?.email || !credentials?.password) {
-          throw new Error("Missing email or password")
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+        type: { label: "User Type", type: "text" }
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password || !credentials?.type) {
+          throw new Error("Missing credentials");
         }
 
         try {
           const user = await prisma.user.findUnique({
-            where: {
-              email: credentials.email
-            }
-          })
+            where: { email: credentials.email }
+          });
 
-          if(!user) {
-            throw new Error("No user found")
-          }
+          if (!user) throw new Error("No user found");
 
           const isValid = await bcrypt.compare(credentials.password, user.password);
+          if (!isValid) throw new Error("Invalid password");
 
-          if(!isValid) throw new Error("Invalid passsword")
+          if (user.type !== credentials.type) throw new Error("User type mismatch");
 
           return {
             id: user.id.toString(),
             email: user.email,
-            name: user.name
-          }
-
+            type: user.type // ✅ return it so you can use it in jwt()
+          };
         } catch (error) {
-          throw error
+          throw error;
         }
       }
     })
   ],
 
   callbacks: {
-    async jwt({user, token}){
-      if(user) {
-        token.id = user.id
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.type = (user as any).type; // 👈 type cast OR extend types (preferred)
       }
-      return token
+      return token;
     },
-
-    async session({session, token}) {
-
-      if(session.user) {
-        session.user.id = token.id as string
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id as string;
+        session.user.type = token.type;
       }
-      
-      return session
+      return session;
     }
   },
+
   pages: {
     signIn: "/login",
     error: "/login"
   },
 
   session: {
-    strategy:"jwt",
+    strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60
-  }, 
+  },
+
   secret: process.env.NEXTAUTH_SECRET
-}
+};
