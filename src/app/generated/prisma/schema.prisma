@@ -35,16 +35,17 @@ model Faculty {
 }
 
 model Batch {
-  id          String    @id @default(uuid())
-  name        String
-  category    Category
-  level       Level
-  description String?
-  startDate   DateTime
-  endDate     DateTime?
-  price       Int
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id              String    @id @default(uuid())
+  name            String
+  category        Category
+  level           Level
+  description     String?
+  startDate       DateTime
+  endDate         DateTime?
+  beforeDiscounnt Int
+  price           Int
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
 }
 
 enum Category {

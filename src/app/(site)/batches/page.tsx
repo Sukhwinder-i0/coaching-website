@@ -28,7 +28,7 @@ export default function Categories() {
 
   return (
     
-      <div className="flex justify-around gap-10 mt-10 w-full max-w-7xl">
+      <div className="flex flex-col lg:flex-row justify-around gap-10 mt-10 w-full max-w-7xl">
       
           <Card
             type="feature"

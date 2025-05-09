@@ -39,7 +39,7 @@ const Page = () => {
   return (
     <div className="fixed inset-0 backdrop-blur-md flex justify-center items-center z-50">
       <div className="max-w-md w-full bg-slate-900 rounded-lg p-6 space-y-4 relative border-l-4 border-blue-500">
-        <SelectBox value={type} onChange={setType} />
+        
         <InputBox
           type="email"
           placeholder="Email"

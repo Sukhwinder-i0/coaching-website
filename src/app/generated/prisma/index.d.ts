@@ -4307,10 +4307,12 @@ export namespace Prisma {
   }
 
   export type BatchAvgAggregateOutputType = {
+    beforeDiscounnt: number | null
     price: number | null
   }
 
   export type BatchSumAggregateOutputType = {
+    beforeDiscounnt: number | null
     price: number | null
   }
 
@@ -4322,6 +4324,7 @@ export namespace Prisma {
     description: string | null
     startDate: Date | null
     endDate: Date | null
+    beforeDiscounnt: number | null
     price: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4335,6 +4338,7 @@ export namespace Prisma {
     description: string | null
     startDate: Date | null
     endDate: Date | null
+    beforeDiscounnt: number | null
     price: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4348,6 +4352,7 @@ export namespace Prisma {
     description: number
     startDate: number
     endDate: number
+    beforeDiscounnt: number
     price: number
     createdAt: number
     updatedAt: number
@@ -4356,10 +4361,12 @@ export namespace Prisma {
 
 
   export type BatchAvgAggregateInputType = {
+    beforeDiscounnt?: true
     price?: true
   }
 
   export type BatchSumAggregateInputType = {
+    beforeDiscounnt?: true
     price?: true
   }
 
@@ -4371,6 +4378,7 @@ export namespace Prisma {
     description?: true
     startDate?: true
     endDate?: true
+    beforeDiscounnt?: true
     price?: true
     createdAt?: true
     updatedAt?: true
@@ -4384,6 +4392,7 @@ export namespace Prisma {
     description?: true
     startDate?: true
     endDate?: true
+    beforeDiscounnt?: true
     price?: true
     createdAt?: true
     updatedAt?: true
@@ -4397,6 +4406,7 @@ export namespace Prisma {
     description?: true
     startDate?: true
     endDate?: true
+    beforeDiscounnt?: true
     price?: true
     createdAt?: true
     updatedAt?: true
@@ -4497,6 +4507,7 @@ export namespace Prisma {
     description: string | null
     startDate: Date
     endDate: Date | null
+    beforeDiscounnt: number
     price: number
     createdAt: Date
     updatedAt: Date
@@ -4529,6 +4540,7 @@ export namespace Prisma {
     description?: boolean
     startDate?: boolean
     endDate?: boolean
+    beforeDiscounnt?: boolean
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4542,6 +4554,7 @@ export namespace Prisma {
     description?: boolean
     startDate?: boolean
     endDate?: boolean
+    beforeDiscounnt?: boolean
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4555,6 +4568,7 @@ export namespace Prisma {
     description?: boolean
     startDate?: boolean
     endDate?: boolean
+    beforeDiscounnt?: boolean
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4568,12 +4582,13 @@ export namespace Prisma {
     description?: boolean
     startDate?: boolean
     endDate?: boolean
+    beforeDiscounnt?: boolean
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BatchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "level" | "description" | "startDate" | "endDate" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["batch"]>
+  export type BatchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "level" | "description" | "startDate" | "endDate" | "beforeDiscounnt" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["batch"]>
 
   export type $BatchPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Batch"
@@ -4586,6 +4601,7 @@ export namespace Prisma {
       description: string | null
       startDate: Date
       endDate: Date | null
+      beforeDiscounnt: number
       price: number
       createdAt: Date
       updatedAt: Date
@@ -5019,6 +5035,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Batch", 'String'>
     readonly startDate: FieldRef<"Batch", 'DateTime'>
     readonly endDate: FieldRef<"Batch", 'DateTime'>
+    readonly beforeDiscounnt: FieldRef<"Batch", 'Int'>
     readonly price: FieldRef<"Batch", 'Int'>
     readonly createdAt: FieldRef<"Batch", 'DateTime'>
     readonly updatedAt: FieldRef<"Batch", 'DateTime'>
@@ -5445,6 +5462,7 @@ export namespace Prisma {
     description: 'description',
     startDate: 'startDate',
     endDate: 'endDate',
+    beforeDiscounnt: 'beforeDiscounnt',
     price: 'price',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -5752,6 +5770,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Batch"> | string | null
     startDate?: DateTimeFilter<"Batch"> | Date | string
     endDate?: DateTimeNullableFilter<"Batch"> | Date | string | null
+    beforeDiscounnt?: IntFilter<"Batch"> | number
     price?: IntFilter<"Batch"> | number
     createdAt?: DateTimeFilter<"Batch"> | Date | string
     updatedAt?: DateTimeFilter<"Batch"> | Date | string
@@ -5765,6 +5784,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     startDate?: SortOrder
     endDate?: SortOrderInput | SortOrder
+    beforeDiscounnt?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5781,6 +5801,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Batch"> | string | null
     startDate?: DateTimeFilter<"Batch"> | Date | string
     endDate?: DateTimeNullableFilter<"Batch"> | Date | string | null
+    beforeDiscounnt?: IntFilter<"Batch"> | number
     price?: IntFilter<"Batch"> | number
     createdAt?: DateTimeFilter<"Batch"> | Date | string
     updatedAt?: DateTimeFilter<"Batch"> | Date | string
@@ -5794,6 +5815,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     startDate?: SortOrder
     endDate?: SortOrderInput | SortOrder
+    beforeDiscounnt?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5815,6 +5837,7 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Batch"> | string | null
     startDate?: DateTimeWithAggregatesFilter<"Batch"> | Date | string
     endDate?: DateTimeNullableWithAggregatesFilter<"Batch"> | Date | string | null
+    beforeDiscounnt?: IntWithAggregatesFilter<"Batch"> | number
     price?: IntWithAggregatesFilter<"Batch"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Batch"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Batch"> | Date | string
@@ -6001,6 +6024,7 @@ export namespace Prisma {
     description?: string | null
     startDate: Date | string
     endDate?: Date | string | null
+    beforeDiscounnt: number
     price: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6014,6 +6038,7 @@ export namespace Prisma {
     description?: string | null
     startDate: Date | string
     endDate?: Date | string | null
+    beforeDiscounnt: number
     price: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6027,6 +6052,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    beforeDiscounnt?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6040,6 +6066,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    beforeDiscounnt?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6053,6 +6080,7 @@ export namespace Prisma {
     description?: string | null
     startDate: Date | string
     endDate?: Date | string | null
+    beforeDiscounnt: number
     price: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6066,6 +6094,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    beforeDiscounnt?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6079,6 +6108,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    beforeDiscounnt?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6332,12 +6362,14 @@ export namespace Prisma {
     description?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    beforeDiscounnt?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type BatchAvgOrderByAggregateInput = {
+    beforeDiscounnt?: SortOrder
     price?: SortOrder
   }
 
@@ -6349,6 +6381,7 @@ export namespace Prisma {
     description?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    beforeDiscounnt?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -6362,12 +6395,14 @@ export namespace Prisma {
     description?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    beforeDiscounnt?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type BatchSumOrderByAggregateInput = {
+    beforeDiscounnt?: SortOrder
     price?: SortOrder
   }
 

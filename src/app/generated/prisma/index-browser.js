@@ -154,6 +154,7 @@ exports.Prisma.BatchScalarFieldEnum = {
   description: 'description',
   startDate: 'startDate',
   endDate: 'endDate',
+  beforeDiscounnt: 'beforeDiscounnt',
   price: 'price',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

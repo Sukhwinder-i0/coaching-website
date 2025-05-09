@@ -12,24 +12,25 @@ export function ToppersCarousel() {
   const toppers = [
 
     { name: "Vishal", rank: "AIR 237", category: "jee advanced", batch: "2022", url: "/vishal-1.png" },
-    { name: "Himanshu Galav", rank: "AIR 2129", category: "jee advanced", batch: "2021(obc)", url:"himanshu1.jpg" },
+    { name: "Himanshu Galav", rank: "AIR 2129", category: "jee advanced", batch: "2021(obc)", url:"/himanshu1.jpg" },
     { name: "Nidhi Arya", rank: "Neet score 675", category: "Neet", batch:"2024", url: "/nidhi.jpg"},
     
   ]
 
   return (
-    <Carousel className="w-full " >
+    <Carousel className="w-5/7" >
       <CarouselContent >
         {toppers.map((topper, index) => (
           <CarouselItem key={index} >
-            <div className="p-5 w-full flex justify-center ">
+            <div >
               <Card
-              type="topper"
+                type="topper"
                 name={topper.name}
                 rank={topper.rank}
                 batch={topper.batch}
                 category={topper.category}
                 imageUrl={topper.url}
+                alt='toppers images'
               />
             </div>
           </CarouselItem>

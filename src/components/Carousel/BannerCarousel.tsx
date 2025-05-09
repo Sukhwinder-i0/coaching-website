@@ -56,7 +56,7 @@ export function BannerCarousel() {
   ]
 
   return (
-    <Carousel className="w-full">
+    <Carousel className="w-fullg">
       <CarouselContent>
         {banners.map((banner, index) => (
           <CarouselItem key={index}>
