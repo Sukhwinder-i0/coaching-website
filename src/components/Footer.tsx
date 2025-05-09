@@ -1,21 +1,18 @@
-
 import { Facebook, Instagram, Linkedin, Mail } from 'lucide-react'
 import Logo from './Navbar/Logo'
 
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 text-white pt-12 pb-6 px-6">
-      <div className="gap-8 flex justify-around items-center">
-        
+      
+     
+      <div className="lg:gap-30 gap-10 grid grid-cols-1 lg:grid-cols-4  justify-between">
         
         <div className="space-y-2">
           <Logo />
-          <p className="text-sm text-gray-400 italic">
-            Empowering dreams
-          </p>
+          <p className="text-sm text-gray-400 italic">Empowering dreams</p>
         </div>
 
-        
         <div>
           <h3 className="text-blue-400 font-semibold mb-2">Quick Links</h3>
           <ul className="space-y-1 text-sm text-gray-300">
@@ -26,7 +23,6 @@ const Footer = () => {
           </ul>
         </div>
 
-       
         <div>
           <h3 className="text-blue-400 font-semibold mb-2">Contact</h3>
           <ul className="space-y-1 text-sm text-gray-300">
@@ -47,7 +43,6 @@ const Footer = () => {
         </div>
 
       </div>
-
       <div className="text-center mt-10 text-xs text-gray-500 border-t border-gray-700 pt-4">
         &copy; {new Date().getFullYear()} Vision Science Academy. All rights reserved.
       </div>

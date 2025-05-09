@@ -4,14 +4,13 @@ import React, { useState } from 'react';
 import { LuLogIn, LuUserPlus } from 'react-icons/lu'; 
 import { IoClose } from 'react-icons/io5';
 import InputBox from '@/components/InputBox';
-import SelectBox from '@/components/SelectBox';
 import Button from '@/components/Button';
 import { useRouter } from 'next/navigation';
 
 const Page = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [type, setType] = useState('');
+  // const [type, setType] = useState('');
   const [password, setPassword] = useState('');
   
   const router = useRouter();
@@ -21,7 +20,7 @@ const Page = () => {
       const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password, type })
+        body: JSON.stringify({ name, email, password })
       });
 
       if (!res.ok) {
@@ -42,10 +41,10 @@ const Page = () => {
     <div className="fixed inset-0 backdrop-blur-md flex justify-center items-center z-50 ">
       <div className="max-w-md w-full bg-slate-900 rounded-lg p-6 space-y-4 relative border-l-4 border-blue-500">
 
-      <SelectBox 
+      {/* <SelectBox 
         value={type} 
         onChange={setType} 
-      />
+      /> */}
 
         <InputBox 
           type="text" 

@@ -38,16 +38,7 @@ export type Batch = $Result.DefaultSelection<Prisma.$BatchPayload>
  * Enums
  */
 export namespace $Enums {
-  export const userType: {
-  admin: 'admin',
-  Faculty: 'Faculty',
-  student: 'student'
-};
-
-export type userType = (typeof userType)[keyof typeof userType]
-
-
-export const Category: {
+  export const Category: {
   JEE: 'JEE',
   NEET: 'NEET'
 };
@@ -65,10 +56,6 @@ export const Level: {
 export type Level = (typeof Level)[keyof typeof Level]
 
 }
-
-export type userType = $Enums.userType
-
-export const userType: typeof $Enums.userType
 
 export type Category = $Enums.Category
 
@@ -1208,21 +1195,21 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: number | null
-    type: $Enums.userType | null
+    name: string | null
     email: string | null
     password: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
-    type: $Enums.userType | null
+    name: string | null
     email: string | null
     password: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
-    type: number
+    name: number
     email: number
     password: number
     _all: number
@@ -1239,21 +1226,21 @@ export namespace Prisma {
 
   export type UserMinAggregateInputType = {
     id?: true
-    type?: true
+    name?: true
     email?: true
     password?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
-    type?: true
+    name?: true
     email?: true
     password?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
-    type?: true
+    name?: true
     email?: true
     password?: true
     _all?: true
@@ -1347,7 +1334,7 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: number
-    type: $Enums.userType
+    name: string
     email: string
     password: string
     _count: UserCountAggregateOutputType | null
@@ -1373,40 +1360,40 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    type?: boolean
+    name?: boolean
     email?: boolean
     password?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    type?: boolean
+    name?: boolean
     email?: boolean
     password?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    type?: boolean
+    name?: boolean
     email?: boolean
     password?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
-    type?: boolean
+    name?: boolean
     email?: boolean
     password?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "email" | "password", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      type: $Enums.userType
+      name: string
       email: string
       password: string
     }, ExtArgs["result"]["user"]>
@@ -1833,7 +1820,7 @@ export namespace Prisma {
    */
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'Int'>
-    readonly type: FieldRef<"User", 'userType'>
+    readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
   }
@@ -5417,7 +5404,7 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    type: 'type',
+    name: 'name',
     email: 'email',
     password: 'password'
   };
@@ -5510,20 +5497,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'userType'
-   */
-  export type EnumuserTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'userType'>
-    
-
-
-  /**
-   * Reference to a field of type 'userType[]'
-   */
-  export type ListEnumuserTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'userType[]'>
-    
-
-
-  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -5601,14 +5574,14 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: IntFilter<"User"> | number
-    type?: EnumuserTypeFilter<"User"> | $Enums.userType
+    name?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    type?: SortOrder
+    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
   }
@@ -5619,13 +5592,13 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    type?: EnumuserTypeFilter<"User"> | $Enums.userType
+    name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    type?: SortOrder
+    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -5640,7 +5613,7 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"User"> | number
-    type?: EnumuserTypeWithAggregatesFilter<"User"> | $Enums.userType
+    name?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
   }
@@ -5848,47 +5821,47 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
-    type: $Enums.userType
+    name?: string
     email: string
     password: string
   }
 
   export type UserUncheckedCreateInput = {
     id?: number
-    type: $Enums.userType
+    name?: string
     email: string
     password: string
   }
 
   export type UserUpdateInput = {
-    type?: EnumuserTypeFieldUpdateOperationsInput | $Enums.userType
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    type?: EnumuserTypeFieldUpdateOperationsInput | $Enums.userType
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserCreateManyInput = {
     id?: number
-    type: $Enums.userType
+    name?: string
     email: string
     password: string
   }
 
   export type UserUpdateManyMutationInput = {
-    type?: EnumuserTypeFieldUpdateOperationsInput | $Enums.userType
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    type?: EnumuserTypeFieldUpdateOperationsInput | $Enums.userType
+    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
@@ -6122,13 +6095,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type EnumuserTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.userType | EnumuserTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.userType[] | ListEnumuserTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.userType[] | ListEnumuserTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumuserTypeFilter<$PrismaModel> | $Enums.userType
-  }
-
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -6146,7 +6112,7 @@ export namespace Prisma {
 
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
-    type?: SortOrder
+    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
   }
@@ -6157,14 +6123,14 @@ export namespace Prisma {
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
-    type?: SortOrder
+    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
-    type?: SortOrder
+    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
   }
@@ -6187,16 +6153,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type EnumuserTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.userType | EnumuserTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.userType[] | ListEnumuserTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.userType[] | ListEnumuserTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumuserTypeWithAggregatesFilter<$PrismaModel> | $Enums.userType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumuserTypeFilter<$PrismaModel>
-    _max?: NestedEnumuserTypeFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -6463,10 +6419,6 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type EnumuserTypeFieldUpdateOperationsInput = {
-    set?: $Enums.userType
-  }
-
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -6510,13 +6462,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedEnumuserTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.userType | EnumuserTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.userType[] | ListEnumuserTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.userType[] | ListEnumuserTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumuserTypeFilter<$PrismaModel> | $Enums.userType
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -6556,16 +6501,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedEnumuserTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.userType | EnumuserTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.userType[] | ListEnumuserTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.userType[] | ListEnumuserTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumuserTypeWithAggregatesFilter<$PrismaModel> | $Enums.userType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumuserTypeFilter<$PrismaModel>
-    _max?: NestedEnumuserTypeFilter<$PrismaModel>
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {

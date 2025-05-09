@@ -122,7 +122,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  type: 'type',
+  name: 'name',
   email: 'email',
   password: 'password'
 };
@@ -173,12 +173,6 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-exports.userType = exports.$Enums.userType = {
-  admin: 'admin',
-  Faculty: 'Faculty',
-  student: 'student'
-};
-
 exports.Category = exports.$Enums.Category = {
   JEE: 'JEE',
   NEET: 'NEET'

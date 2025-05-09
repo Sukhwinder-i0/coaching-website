@@ -1,11 +1,12 @@
 'use client'
 
+import Image from 'next/image'
 import React from 'react'
 
 const Logo = () => {
   return (
     <div >  
-        <img className='h-16 white ' src='/logobgnot.png' />
+        <Image className='h-16 white ' src='/logobgnot.png' alt='logo'/>
     </div>
   )
 }

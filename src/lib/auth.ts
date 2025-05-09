@@ -9,11 +9,10 @@ export const authOptions: NextAuthOptions = {
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" },
-        type: { label: "User Type", type: "text" }
+        password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password || !credentials?.type) {
+        if (!credentials?.email || !credentials?.password ) {
           throw new Error("Missing credentials");
         }
 
@@ -27,12 +26,9 @@ export const authOptions: NextAuthOptions = {
           const isValid = await bcrypt.compare(credentials.password, user.password);
           if (!isValid) throw new Error("Invalid password");
 
-          if (user.type !== credentials.type) throw new Error("User type mismatch");
-
           return {
             id: user.id.toString(),
-            email: user.email,
-            type: user.type // ✅ return it so you can use it in jwt()
+            email: user.email
           };
         } catch (error) {
           throw error;
@@ -45,14 +41,12 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.type = (user as any).type; // 👈 type cast OR extend types (preferred)
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string;
-        session.user.type = token.type;
       }
       return session;
     }

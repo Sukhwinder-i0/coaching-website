@@ -8,15 +8,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum userType {
-  admin
-  Faculty
-  student
-}
-
 model User {
   id Int @id @default(autoincrement())
-  type userType
+  name String @default("admin")
   email String @unique
   password String
 }

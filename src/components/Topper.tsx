@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 interface TopperProps {
@@ -15,7 +16,7 @@ const Topper = (props: TopperProps) => {
     <div className={`${props.className} w-2/3 flex flex-col items-center justify-around py-8 px-4 bg-slate-900 rounded-2xl h-auto border-2 border-blue-400 shadow-lg shadow-blue-400`}>
         <div className='flex w-full justify-center items-center flex-col pb-6'>
             
-              <img className='w-25 rounded-full h-25 mb-4 border content-overflow' src={props.url} alt={props.alt} />
+            <Image className='w-25 rounded-full h-25 mb-4 border content-overflow' src={props.url || '/default-image.png'} alt={props.alt || 'Default Alt Text'} />
           
           <div className='text-lg bg-slate-700 px-4 py-2 flex justify-center capitalize rounded-md'>
             {props.name}

@@ -1,12 +1,11 @@
 'use client'
 
-import React from 'react';
+import React, { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Item from './Item';
 import Logo from './Logo';
 import Button from '../Button';
 import { LuLogIn } from 'react-icons/lu';
-import { useModalOpen } from '@/store/useModalStore';
 import { useAdmin } from '@/store/useAdminStore';
 
 const navItems = [
@@ -17,20 +16,20 @@ const navItems = [
 ];
 
 const Navbar = () => {
-  const { isModalOpen, toggleModalOpen } = useModalOpen();
   const { isAdmin } = useAdmin();
   const pathname = usePathname();
+  const router = useRouter();
 
-  const router =  useRouter()
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <>
-      <nav className="fixed top-0 z-10 w-full flex justify-between items-center bg-gray-900 px-14 py-1 shadow-md text-sm">
+    <nav className="fixed top-0 z-10 w-full bg-gray-900 shadow-md px-4 sm:px-10 py-2 text-sm">
+      <div className="flex justify-between items-center max-w-7xl mx-auto">
         <div className="text-white text-xl font-bold cursor-pointer">
           <Logo />
         </div>
 
-        <div className="flex justify-center items-center gap-3">
+        <div className="hidden md:flex items-center gap-5 text-white">
           {!isAdmin &&
             navItems.map((item) => (
               <Item
@@ -40,12 +39,33 @@ const Navbar = () => {
                 isActive={pathname === item.path}
               />
             ))}
-            <Button text="Login" icon={<LuLogIn />} onClick={() => router.push('/login')} /> 
+          <Button text="Login" icon={<LuLogIn />} onClick={() => router.push('/login')} />
         </div>
-      </nav>
 
-      
-    </>
+        {/* Mobile Toggle Button */}
+        <div className="md:hidden">
+          <button onClick={() => setMenuOpen(!menuOpen)} className="text-white">
+            ☰
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden flex flex-col gap-4 mt-3 text-white px-4">
+          {!isAdmin &&
+            navItems.map((item) => (
+              <Item
+                key={item.path}
+                text={item.text}
+                href={item.path}
+                isActive={pathname === item.path}
+              />
+            ))}
+          <Button text="Login" icon={<LuLogIn />} onClick={() => router.push('/login')} />
+        </div>
+      )}
+    </nav>
   );
 };
 

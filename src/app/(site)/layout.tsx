@@ -12,13 +12,11 @@ export default function RootLayout({
   children: ReactNode;
 }) {
 
-  const { isAdmin, setIsAdmin } = useAdmin()
-
   return (
     <html lang="en">
       <body className="font-[sans] bg-gradient-to-r from-slate-700 to-slate-800">
         <Navbar />
-        <main className="min-h-screen">
+        <main className="min-h-auto">
           {children}
         </main>
         
