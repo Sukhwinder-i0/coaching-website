@@ -143,7 +143,9 @@ exports.Prisma.FacultyScalarFieldEnum = {
   subject: 'subject',
   experience: 'experience',
   bio: 'bio',
-  avatar: 'avatar'
+  avatar: 'avatar',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.BatchScalarFieldEnum = {
@@ -154,10 +156,12 @@ exports.Prisma.BatchScalarFieldEnum = {
   description: 'description',
   startDate: 'startDate',
   endDate: 'endDate',
-  beforeDiscounnt: 'beforeDiscounnt',
+  beforeDiscount: 'beforeDiscount',
   price: 'price',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  mode: 'mode',
+  faculties: 'faculties'
 };
 
 exports.Prisma.SortOrder = {
@@ -184,6 +188,12 @@ exports.Level = exports.$Enums.Level = {
   X: 'X',
   XI: 'XI',
   XII: 'XII'
+};
+
+exports.Mode = exports.$Enums.Mode = {
+  online: 'online',
+  offline: 'offline',
+  hybrid: 'hybrid'
 };
 
 exports.Prisma.ModelName = {

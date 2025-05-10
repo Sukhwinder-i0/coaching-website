@@ -39,7 +39,7 @@ const Navbar = () => {
                 isActive={pathname === item.path}
               />
             ))}
-          <Button text="Login" icon={<LuLogIn />} onClick={() => router.push('/login')} />
+          <Button text="Admin" icon={<LuLogIn />} onClick={() => router.push('/login')} />
         </div>
 
         {/* Mobile Toggle Button */}
@@ -62,7 +62,7 @@ const Navbar = () => {
                 isActive={pathname === item.path}
               />
             ))}
-          <Button text="Login" icon={<LuLogIn />} onClick={() => router.push('/login')} />
+          <Button text="Admin" icon={<LuLogIn />} onClick={() => router.push('/login')} />
         </div>
       )}
     </nav>

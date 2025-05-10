@@ -38,7 +38,16 @@ export type Batch = $Result.DefaultSelection<Prisma.$BatchPayload>
  * Enums
  */
 export namespace $Enums {
-  export const Category: {
+  export const Mode: {
+  online: 'online',
+  offline: 'offline',
+  hybrid: 'hybrid'
+};
+
+export type Mode = (typeof Mode)[keyof typeof Mode]
+
+
+export const Category: {
   JEE: 'JEE',
   NEET: 'NEET'
 };
@@ -56,6 +65,10 @@ export const Level: {
 export type Level = (typeof Level)[keyof typeof Level]
 
 }
+
+export type Mode = $Enums.Mode
+
+export const Mode: typeof $Enums.Mode
 
 export type Category = $Enums.Category
 
@@ -3277,6 +3290,8 @@ export namespace Prisma {
     experience: number | null
     bio: string | null
     avatar: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type FacultyMaxAggregateOutputType = {
@@ -3286,6 +3301,8 @@ export namespace Prisma {
     experience: number | null
     bio: string | null
     avatar: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type FacultyCountAggregateOutputType = {
@@ -3295,6 +3312,8 @@ export namespace Prisma {
     experience: number
     bio: number
     avatar: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -3316,6 +3335,8 @@ export namespace Prisma {
     experience?: true
     bio?: true
     avatar?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type FacultyMaxAggregateInputType = {
@@ -3325,6 +3346,8 @@ export namespace Prisma {
     experience?: true
     bio?: true
     avatar?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type FacultyCountAggregateInputType = {
@@ -3334,6 +3357,8 @@ export namespace Prisma {
     experience?: true
     bio?: true
     avatar?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -3429,7 +3454,9 @@ export namespace Prisma {
     subject: string
     experience: number
     bio: string
-    avatar: string
+    avatar: string | null
+    createdAt: Date
+    updatedAt: Date
     _count: FacultyCountAggregateOutputType | null
     _avg: FacultyAvgAggregateOutputType | null
     _sum: FacultySumAggregateOutputType | null
@@ -3458,6 +3485,8 @@ export namespace Prisma {
     experience?: boolean
     bio?: boolean
     avatar?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["faculty"]>
 
   export type FacultySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3467,6 +3496,8 @@ export namespace Prisma {
     experience?: boolean
     bio?: boolean
     avatar?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["faculty"]>
 
   export type FacultySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3476,6 +3507,8 @@ export namespace Prisma {
     experience?: boolean
     bio?: boolean
     avatar?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["faculty"]>
 
   export type FacultySelectScalar = {
@@ -3485,9 +3518,11 @@ export namespace Prisma {
     experience?: boolean
     bio?: boolean
     avatar?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type FacultyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "subject" | "experience" | "bio" | "avatar", ExtArgs["result"]["faculty"]>
+  export type FacultyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "subject" | "experience" | "bio" | "avatar" | "createdAt" | "updatedAt", ExtArgs["result"]["faculty"]>
 
   export type $FacultyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Faculty"
@@ -3498,7 +3533,9 @@ export namespace Prisma {
       subject: string
       experience: number
       bio: string
-      avatar: string
+      avatar: string | null
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["faculty"]>
     composites: {}
   }
@@ -3928,6 +3965,8 @@ export namespace Prisma {
     readonly experience: FieldRef<"Faculty", 'Int'>
     readonly bio: FieldRef<"Faculty", 'String'>
     readonly avatar: FieldRef<"Faculty", 'String'>
+    readonly createdAt: FieldRef<"Faculty", 'DateTime'>
+    readonly updatedAt: FieldRef<"Faculty", 'DateTime'>
   }
     
 
@@ -4307,12 +4346,12 @@ export namespace Prisma {
   }
 
   export type BatchAvgAggregateOutputType = {
-    beforeDiscounnt: number | null
+    beforeDiscount: number | null
     price: number | null
   }
 
   export type BatchSumAggregateOutputType = {
-    beforeDiscounnt: number | null
+    beforeDiscount: number | null
     price: number | null
   }
 
@@ -4324,10 +4363,11 @@ export namespace Prisma {
     description: string | null
     startDate: Date | null
     endDate: Date | null
-    beforeDiscounnt: number | null
+    beforeDiscount: number | null
     price: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    mode: $Enums.Mode | null
   }
 
   export type BatchMaxAggregateOutputType = {
@@ -4338,10 +4378,11 @@ export namespace Prisma {
     description: string | null
     startDate: Date | null
     endDate: Date | null
-    beforeDiscounnt: number | null
+    beforeDiscount: number | null
     price: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    mode: $Enums.Mode | null
   }
 
   export type BatchCountAggregateOutputType = {
@@ -4352,21 +4393,23 @@ export namespace Prisma {
     description: number
     startDate: number
     endDate: number
-    beforeDiscounnt: number
+    beforeDiscount: number
     price: number
     createdAt: number
     updatedAt: number
+    mode: number
+    faculties: number
     _all: number
   }
 
 
   export type BatchAvgAggregateInputType = {
-    beforeDiscounnt?: true
+    beforeDiscount?: true
     price?: true
   }
 
   export type BatchSumAggregateInputType = {
-    beforeDiscounnt?: true
+    beforeDiscount?: true
     price?: true
   }
 
@@ -4378,10 +4421,11 @@ export namespace Prisma {
     description?: true
     startDate?: true
     endDate?: true
-    beforeDiscounnt?: true
+    beforeDiscount?: true
     price?: true
     createdAt?: true
     updatedAt?: true
+    mode?: true
   }
 
   export type BatchMaxAggregateInputType = {
@@ -4392,10 +4436,11 @@ export namespace Prisma {
     description?: true
     startDate?: true
     endDate?: true
-    beforeDiscounnt?: true
+    beforeDiscount?: true
     price?: true
     createdAt?: true
     updatedAt?: true
+    mode?: true
   }
 
   export type BatchCountAggregateInputType = {
@@ -4406,10 +4451,12 @@ export namespace Prisma {
     description?: true
     startDate?: true
     endDate?: true
-    beforeDiscounnt?: true
+    beforeDiscount?: true
     price?: true
     createdAt?: true
     updatedAt?: true
+    mode?: true
+    faculties?: true
     _all?: true
   }
 
@@ -4501,16 +4548,18 @@ export namespace Prisma {
 
   export type BatchGroupByOutputType = {
     id: string
-    name: string
+    name: string | null
     category: $Enums.Category
     level: $Enums.Level
     description: string | null
     startDate: Date
     endDate: Date | null
-    beforeDiscounnt: number
+    beforeDiscount: number
     price: number
     createdAt: Date
     updatedAt: Date
+    mode: $Enums.Mode
+    faculties: string[]
     _count: BatchCountAggregateOutputType | null
     _avg: BatchAvgAggregateOutputType | null
     _sum: BatchSumAggregateOutputType | null
@@ -4540,10 +4589,12 @@ export namespace Prisma {
     description?: boolean
     startDate?: boolean
     endDate?: boolean
-    beforeDiscounnt?: boolean
+    beforeDiscount?: boolean
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    mode?: boolean
+    faculties?: boolean
   }, ExtArgs["result"]["batch"]>
 
   export type BatchSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4554,10 +4605,12 @@ export namespace Prisma {
     description?: boolean
     startDate?: boolean
     endDate?: boolean
-    beforeDiscounnt?: boolean
+    beforeDiscount?: boolean
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    mode?: boolean
+    faculties?: boolean
   }, ExtArgs["result"]["batch"]>
 
   export type BatchSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4568,10 +4621,12 @@ export namespace Prisma {
     description?: boolean
     startDate?: boolean
     endDate?: boolean
-    beforeDiscounnt?: boolean
+    beforeDiscount?: boolean
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    mode?: boolean
+    faculties?: boolean
   }, ExtArgs["result"]["batch"]>
 
   export type BatchSelectScalar = {
@@ -4582,29 +4637,33 @@ export namespace Prisma {
     description?: boolean
     startDate?: boolean
     endDate?: boolean
-    beforeDiscounnt?: boolean
+    beforeDiscount?: boolean
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    mode?: boolean
+    faculties?: boolean
   }
 
-  export type BatchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "level" | "description" | "startDate" | "endDate" | "beforeDiscounnt" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["batch"]>
+  export type BatchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "level" | "description" | "startDate" | "endDate" | "beforeDiscount" | "price" | "createdAt" | "updatedAt" | "mode" | "faculties", ExtArgs["result"]["batch"]>
 
   export type $BatchPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Batch"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string
+      name: string | null
       category: $Enums.Category
       level: $Enums.Level
       description: string | null
       startDate: Date
       endDate: Date | null
-      beforeDiscounnt: number
+      beforeDiscount: number
       price: number
       createdAt: Date
       updatedAt: Date
+      mode: $Enums.Mode
+      faculties: string[]
     }, ExtArgs["result"]["batch"]>
     composites: {}
   }
@@ -5035,10 +5094,12 @@ export namespace Prisma {
     readonly description: FieldRef<"Batch", 'String'>
     readonly startDate: FieldRef<"Batch", 'DateTime'>
     readonly endDate: FieldRef<"Batch", 'DateTime'>
-    readonly beforeDiscounnt: FieldRef<"Batch", 'Int'>
+    readonly beforeDiscount: FieldRef<"Batch", 'Int'>
     readonly price: FieldRef<"Batch", 'Int'>
     readonly createdAt: FieldRef<"Batch", 'DateTime'>
     readonly updatedAt: FieldRef<"Batch", 'DateTime'>
+    readonly mode: FieldRef<"Batch", 'Mode'>
+    readonly faculties: FieldRef<"Batch", 'String[]'>
   }
     
 
@@ -5448,7 +5509,9 @@ export namespace Prisma {
     subject: 'subject',
     experience: 'experience',
     bio: 'bio',
-    avatar: 'avatar'
+    avatar: 'avatar',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type FacultyScalarFieldEnum = (typeof FacultyScalarFieldEnum)[keyof typeof FacultyScalarFieldEnum]
@@ -5462,10 +5525,12 @@ export namespace Prisma {
     description: 'description',
     startDate: 'startDate',
     endDate: 'endDate',
-    beforeDiscounnt: 'beforeDiscounnt',
+    beforeDiscount: 'beforeDiscount',
     price: 'price',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    mode: 'mode',
+    faculties: 'faculties'
   };
 
   export type BatchScalarFieldEnum = (typeof BatchScalarFieldEnum)[keyof typeof BatchScalarFieldEnum]
@@ -5529,6 +5594,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Category'
    */
   export type EnumCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Category'>
@@ -5557,16 +5636,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
+   * Reference to a field of type 'Mode'
    */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+  export type EnumModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Mode'>
     
 
 
   /**
-   * Reference to a field of type 'DateTime[]'
+   * Reference to a field of type 'Mode[]'
    */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+  export type ListEnumModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Mode[]'>
     
 
 
@@ -5709,7 +5788,9 @@ export namespace Prisma {
     subject?: StringFilter<"Faculty"> | string
     experience?: IntFilter<"Faculty"> | number
     bio?: StringFilter<"Faculty"> | string
-    avatar?: StringFilter<"Faculty"> | string
+    avatar?: StringNullableFilter<"Faculty"> | string | null
+    createdAt?: DateTimeFilter<"Faculty"> | Date | string
+    updatedAt?: DateTimeFilter<"Faculty"> | Date | string
   }
 
   export type FacultyOrderByWithRelationInput = {
@@ -5718,7 +5799,9 @@ export namespace Prisma {
     subject?: SortOrder
     experience?: SortOrder
     bio?: SortOrder
-    avatar?: SortOrder
+    avatar?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type FacultyWhereUniqueInput = Prisma.AtLeast<{
@@ -5730,7 +5813,9 @@ export namespace Prisma {
     subject?: StringFilter<"Faculty"> | string
     experience?: IntFilter<"Faculty"> | number
     bio?: StringFilter<"Faculty"> | string
-    avatar?: StringFilter<"Faculty"> | string
+    avatar?: StringNullableFilter<"Faculty"> | string | null
+    createdAt?: DateTimeFilter<"Faculty"> | Date | string
+    updatedAt?: DateTimeFilter<"Faculty"> | Date | string
   }, "id">
 
   export type FacultyOrderByWithAggregationInput = {
@@ -5739,7 +5824,9 @@ export namespace Prisma {
     subject?: SortOrder
     experience?: SortOrder
     bio?: SortOrder
-    avatar?: SortOrder
+    avatar?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: FacultyCountOrderByAggregateInput
     _avg?: FacultyAvgOrderByAggregateInput
     _max?: FacultyMaxOrderByAggregateInput
@@ -5756,7 +5843,9 @@ export namespace Prisma {
     subject?: StringWithAggregatesFilter<"Faculty"> | string
     experience?: IntWithAggregatesFilter<"Faculty"> | number
     bio?: StringWithAggregatesFilter<"Faculty"> | string
-    avatar?: StringWithAggregatesFilter<"Faculty"> | string
+    avatar?: StringNullableWithAggregatesFilter<"Faculty"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Faculty"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Faculty"> | Date | string
   }
 
   export type BatchWhereInput = {
@@ -5764,30 +5853,34 @@ export namespace Prisma {
     OR?: BatchWhereInput[]
     NOT?: BatchWhereInput | BatchWhereInput[]
     id?: StringFilter<"Batch"> | string
-    name?: StringFilter<"Batch"> | string
+    name?: StringNullableFilter<"Batch"> | string | null
     category?: EnumCategoryFilter<"Batch"> | $Enums.Category
     level?: EnumLevelFilter<"Batch"> | $Enums.Level
     description?: StringNullableFilter<"Batch"> | string | null
     startDate?: DateTimeFilter<"Batch"> | Date | string
     endDate?: DateTimeNullableFilter<"Batch"> | Date | string | null
-    beforeDiscounnt?: IntFilter<"Batch"> | number
+    beforeDiscount?: IntFilter<"Batch"> | number
     price?: IntFilter<"Batch"> | number
     createdAt?: DateTimeFilter<"Batch"> | Date | string
     updatedAt?: DateTimeFilter<"Batch"> | Date | string
+    mode?: EnumModeFilter<"Batch"> | $Enums.Mode
+    faculties?: StringNullableListFilter<"Batch">
   }
 
   export type BatchOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
+    name?: SortOrderInput | SortOrder
     category?: SortOrder
     level?: SortOrder
     description?: SortOrderInput | SortOrder
     startDate?: SortOrder
     endDate?: SortOrderInput | SortOrder
-    beforeDiscounnt?: SortOrder
+    beforeDiscount?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    mode?: SortOrder
+    faculties?: SortOrder
   }
 
   export type BatchWhereUniqueInput = Prisma.AtLeast<{
@@ -5795,30 +5888,34 @@ export namespace Prisma {
     AND?: BatchWhereInput | BatchWhereInput[]
     OR?: BatchWhereInput[]
     NOT?: BatchWhereInput | BatchWhereInput[]
-    name?: StringFilter<"Batch"> | string
+    name?: StringNullableFilter<"Batch"> | string | null
     category?: EnumCategoryFilter<"Batch"> | $Enums.Category
     level?: EnumLevelFilter<"Batch"> | $Enums.Level
     description?: StringNullableFilter<"Batch"> | string | null
     startDate?: DateTimeFilter<"Batch"> | Date | string
     endDate?: DateTimeNullableFilter<"Batch"> | Date | string | null
-    beforeDiscounnt?: IntFilter<"Batch"> | number
+    beforeDiscount?: IntFilter<"Batch"> | number
     price?: IntFilter<"Batch"> | number
     createdAt?: DateTimeFilter<"Batch"> | Date | string
     updatedAt?: DateTimeFilter<"Batch"> | Date | string
+    mode?: EnumModeFilter<"Batch"> | $Enums.Mode
+    faculties?: StringNullableListFilter<"Batch">
   }, "id">
 
   export type BatchOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
+    name?: SortOrderInput | SortOrder
     category?: SortOrder
     level?: SortOrder
     description?: SortOrderInput | SortOrder
     startDate?: SortOrder
     endDate?: SortOrderInput | SortOrder
-    beforeDiscounnt?: SortOrder
+    beforeDiscount?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    mode?: SortOrder
+    faculties?: SortOrder
     _count?: BatchCountOrderByAggregateInput
     _avg?: BatchAvgOrderByAggregateInput
     _max?: BatchMaxOrderByAggregateInput
@@ -5831,16 +5928,18 @@ export namespace Prisma {
     OR?: BatchScalarWhereWithAggregatesInput[]
     NOT?: BatchScalarWhereWithAggregatesInput | BatchScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Batch"> | string
-    name?: StringWithAggregatesFilter<"Batch"> | string
+    name?: StringNullableWithAggregatesFilter<"Batch"> | string | null
     category?: EnumCategoryWithAggregatesFilter<"Batch"> | $Enums.Category
     level?: EnumLevelWithAggregatesFilter<"Batch"> | $Enums.Level
     description?: StringNullableWithAggregatesFilter<"Batch"> | string | null
     startDate?: DateTimeWithAggregatesFilter<"Batch"> | Date | string
     endDate?: DateTimeNullableWithAggregatesFilter<"Batch"> | Date | string | null
-    beforeDiscounnt?: IntWithAggregatesFilter<"Batch"> | number
+    beforeDiscount?: IntWithAggregatesFilter<"Batch"> | number
     price?: IntWithAggregatesFilter<"Batch"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Batch"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Batch"> | Date | string
+    mode?: EnumModeWithAggregatesFilter<"Batch"> | $Enums.Mode
+    faculties?: StringNullableListFilter<"Batch">
   }
 
   export type UserCreateInput = {
@@ -5961,7 +6060,9 @@ export namespace Prisma {
     subject: string
     experience: number
     bio: string
-    avatar: string
+    avatar?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type FacultyUncheckedCreateInput = {
@@ -5970,7 +6071,9 @@ export namespace Prisma {
     subject: string
     experience: number
     bio: string
-    avatar: string
+    avatar?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type FacultyUpdateInput = {
@@ -5978,7 +6081,9 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     experience?: IntFieldUpdateOperationsInput | number
     bio?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FacultyUncheckedUpdateInput = {
@@ -5987,7 +6092,9 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     experience?: IntFieldUpdateOperationsInput | number
     bio?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FacultyCreateManyInput = {
@@ -5996,7 +6103,9 @@ export namespace Prisma {
     subject: string
     experience: number
     bio: string
-    avatar: string
+    avatar?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type FacultyUpdateManyMutationInput = {
@@ -6004,7 +6113,9 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     experience?: IntFieldUpdateOperationsInput | number
     bio?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FacultyUncheckedUpdateManyInput = {
@@ -6013,105 +6124,121 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     experience?: IntFieldUpdateOperationsInput | number
     bio?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BatchCreateInput = {
     id?: string
-    name: string
+    name?: string | null
     category: $Enums.Category
     level: $Enums.Level
     description?: string | null
     startDate: Date | string
     endDate?: Date | string | null
-    beforeDiscounnt: number
+    beforeDiscount: number
     price: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    mode: $Enums.Mode
+    faculties?: BatchCreatefacultiesInput | string[]
   }
 
   export type BatchUncheckedCreateInput = {
     id?: string
-    name: string
+    name?: string | null
     category: $Enums.Category
     level: $Enums.Level
     description?: string | null
     startDate: Date | string
     endDate?: Date | string | null
-    beforeDiscounnt: number
+    beforeDiscount: number
     price: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    mode: $Enums.Mode
+    faculties?: BatchCreatefacultiesInput | string[]
   }
 
   export type BatchUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
     level?: EnumLevelFieldUpdateOperationsInput | $Enums.Level
     description?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    beforeDiscounnt?: IntFieldUpdateOperationsInput | number
+    beforeDiscount?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mode?: EnumModeFieldUpdateOperationsInput | $Enums.Mode
+    faculties?: BatchUpdatefacultiesInput | string[]
   }
 
   export type BatchUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
     level?: EnumLevelFieldUpdateOperationsInput | $Enums.Level
     description?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    beforeDiscounnt?: IntFieldUpdateOperationsInput | number
+    beforeDiscount?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mode?: EnumModeFieldUpdateOperationsInput | $Enums.Mode
+    faculties?: BatchUpdatefacultiesInput | string[]
   }
 
   export type BatchCreateManyInput = {
     id?: string
-    name: string
+    name?: string | null
     category: $Enums.Category
     level: $Enums.Level
     description?: string | null
     startDate: Date | string
     endDate?: Date | string | null
-    beforeDiscounnt: number
+    beforeDiscount: number
     price: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    mode: $Enums.Mode
+    faculties?: BatchCreatefacultiesInput | string[]
   }
 
   export type BatchUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
     level?: EnumLevelFieldUpdateOperationsInput | $Enums.Level
     description?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    beforeDiscounnt?: IntFieldUpdateOperationsInput | number
+    beforeDiscount?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mode?: EnumModeFieldUpdateOperationsInput | $Enums.Mode
+    faculties?: BatchUpdatefacultiesInput | string[]
   }
 
   export type BatchUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
     level?: EnumLevelFieldUpdateOperationsInput | $Enums.Level
     description?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    beforeDiscounnt?: IntFieldUpdateOperationsInput | number
+    beforeDiscount?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mode?: EnumModeFieldUpdateOperationsInput | $Enums.Mode
+    faculties?: BatchUpdatefacultiesInput | string[]
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -6281,6 +6408,17 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type FacultyCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -6288,6 +6426,8 @@ export namespace Prisma {
     experience?: SortOrder
     bio?: SortOrder
     avatar?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type FacultyAvgOrderByAggregateInput = {
@@ -6302,6 +6442,8 @@ export namespace Prisma {
     experience?: SortOrder
     bio?: SortOrder
     avatar?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type FacultyMinOrderByAggregateInput = {
@@ -6311,11 +6453,27 @@ export namespace Prisma {
     experience?: SortOrder
     bio?: SortOrder
     avatar?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type FacultySumOrderByAggregateInput = {
     id?: SortOrder
     experience?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type EnumCategoryFilter<$PrismaModel = never> = {
@@ -6332,17 +6490,6 @@ export namespace Prisma {
     not?: NestedEnumLevelFilter<$PrismaModel> | $Enums.Level
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -6354,6 +6501,21 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type EnumModeFilter<$PrismaModel = never> = {
+    equals?: $Enums.Mode | EnumModeFieldRefInput<$PrismaModel>
+    in?: $Enums.Mode[] | ListEnumModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Mode[] | ListEnumModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumModeFilter<$PrismaModel> | $Enums.Mode
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type BatchCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -6362,14 +6524,16 @@ export namespace Prisma {
     description?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    beforeDiscounnt?: SortOrder
+    beforeDiscount?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    mode?: SortOrder
+    faculties?: SortOrder
   }
 
   export type BatchAvgOrderByAggregateInput = {
-    beforeDiscounnt?: SortOrder
+    beforeDiscount?: SortOrder
     price?: SortOrder
   }
 
@@ -6381,10 +6545,11 @@ export namespace Prisma {
     description?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    beforeDiscounnt?: SortOrder
+    beforeDiscount?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    mode?: SortOrder
   }
 
   export type BatchMinOrderByAggregateInput = {
@@ -6395,14 +6560,15 @@ export namespace Prisma {
     description?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    beforeDiscounnt?: SortOrder
+    beforeDiscount?: SortOrder
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    mode?: SortOrder
   }
 
   export type BatchSumOrderByAggregateInput = {
-    beforeDiscounnt?: SortOrder
+    beforeDiscount?: SortOrder
     price?: SortOrder
   }
 
@@ -6426,20 +6592,6 @@ export namespace Prisma {
     _max?: NestedEnumLevelFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -6452,6 +6604,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type EnumModeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Mode | EnumModeFieldRefInput<$PrismaModel>
+    in?: $Enums.Mode[] | ListEnumModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Mode[] | ListEnumModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumModeWithAggregatesFilter<$PrismaModel> | $Enums.Mode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumModeFilter<$PrismaModel>
+    _max?: NestedEnumModeFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6470,6 +6632,14 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type BatchCreatefacultiesInput = {
+    set: string[]
+  }
+
   export type EnumCategoryFieldUpdateOperationsInput = {
     set?: $Enums.Category
   }
@@ -6478,12 +6648,17 @@ export namespace Prisma {
     set?: $Enums.Level
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type EnumModeFieldUpdateOperationsInput = {
+    set?: $Enums.Mode
+  }
+
+  export type BatchUpdatefacultiesInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -6597,6 +6772,31 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type NestedEnumCategoryFilter<$PrismaModel = never> = {
     equals?: $Enums.Category | EnumCategoryFieldRefInput<$PrismaModel>
     in?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
@@ -6611,17 +6811,6 @@ export namespace Prisma {
     not?: NestedEnumLevelFilter<$PrismaModel> | $Enums.Level
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -6631,6 +6820,13 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedEnumModeFilter<$PrismaModel = never> = {
+    equals?: $Enums.Mode | EnumModeFieldRefInput<$PrismaModel>
+    in?: $Enums.Mode[] | ListEnumModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Mode[] | ListEnumModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumModeFilter<$PrismaModel> | $Enums.Mode
   }
 
   export type NestedEnumCategoryWithAggregatesFilter<$PrismaModel = never> = {
@@ -6653,20 +6849,6 @@ export namespace Prisma {
     _max?: NestedEnumLevelFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -6679,6 +6861,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumModeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Mode | EnumModeFieldRefInput<$PrismaModel>
+    in?: $Enums.Mode[] | ListEnumModeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Mode[] | ListEnumModeFieldRefInput<$PrismaModel>
+    not?: NestedEnumModeWithAggregatesFilter<$PrismaModel> | $Enums.Mode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumModeFilter<$PrismaModel>
+    _max?: NestedEnumModeFilter<$PrismaModel>
   }
 
 

@@ -26,26 +26,36 @@ model Topper {
 }
 
 model Faculty {
-  id         Int    @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   name       String
   subject    String
   experience Int
   bio        String
-  avatar     String
+  avatar     String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 model Batch {
-  id              String    @id @default(uuid())
-  name            String
-  category        Category
-  level           Level
-  description     String?
-  startDate       DateTime
-  endDate         DateTime?
-  beforeDiscounnt Int
-  price           Int
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  id             String    @id @default(uuid())
+  name           String?
+  category       Category
+  level          Level
+  description    String?
+  startDate      DateTime
+  endDate        DateTime?
+  beforeDiscount Int
+  price          Int
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  mode           Mode
+  faculties      String[]
+}
+
+enum Mode {
+  online
+  offline
+  hybrid
 }
 
 enum Category {

@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const data = await req.json();
 
-  const {level, category, startDate, endDate, beforeDiscount, price, mode } = data
+  const {level, category, startDate, endDate, beforeDiscount, price, mode, faculties } = data
 
   try {
     const newBatch = await prisma.batch.create({
@@ -15,14 +15,16 @@ export async function POST(req: Request) {
         endDate: new Date(endDate),
         price,
         beforeDiscount,
-        location,
-        mode
+        mode,
+        faculties
       }})
+
+        if(!newBatch) alert("couldn't add batch")
 
         return NextResponse.json(newBatch, { status: 201 });
 
       } catch (error) {
-        return NextResponse.json({ error: 'Failed to create batch' }, { status: 500 });
+        return NextResponse.json({ error: `Failed to create batch ${error}` }, { status: 500 });
     }
   }
 

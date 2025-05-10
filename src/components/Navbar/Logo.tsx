@@ -6,7 +6,7 @@ import React from 'react'
 const Logo = () => {
   return (
     <div >  
-        <Image width={40} height={40} className='h-16 white object-contain' src='/logobgnot.png' alt='logo'/>
+        <Image width={60} height={60} className='h-16 white object-contain' src='/logobgnot.png' alt='logo'/>
     </div>
   )
 }
