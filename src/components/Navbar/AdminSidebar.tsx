@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import Button from '../Button'
 import { PiSignOutBold } from 'react-icons/pi'
-import { useAdmin } from '@/store/useAdminStore'
+import { UseAdmin } from '@/store/useAdminStore'
 
 const navItems = [
   { name: 'Dashboard', path: '/admin' },
@@ -17,7 +17,7 @@ const navItems = [
 export default function AdminSidebar() {
   const pathname = usePathname()
 
-  const {setIsAdmin} = useAdmin()
+  const {setIsAdmin} = UseAdmin()
 
   return (
     <aside className="w-auto flex flex-col items-between justify-between bg-slate-900 text-white min-h-screen p-4 pb-8 space-y-4 border-r-4 border-slate-500 rounded-r-xl ">

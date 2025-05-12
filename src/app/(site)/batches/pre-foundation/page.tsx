@@ -1,7 +1,7 @@
 'use client';
 
 import Card from '@/components/Card';
-import { Book, GraduationCap } from 'lucide-react';
+import { Book } from 'lucide-react';
 import React from 'react';
 
 const page = () => {

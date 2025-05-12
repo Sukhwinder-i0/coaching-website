@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { LuLogIn, LuUserPlus } from 'react-icons/lu'; 
+import { LuUserPlus } from 'react-icons/lu'; 
 import { IoClose } from 'react-icons/io5';
 import InputBox from '@/components/InputBox';
 import Button from '@/components/Button';

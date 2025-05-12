@@ -1,3 +1,5 @@
+'use client'
+
 import { create } from 'zustand'
 
 type AdminStore = {
@@ -5,7 +7,7 @@ type AdminStore = {
   setIsAdmin: (balue: boolean) => void
 }
 
-export const useAdmin = create<AdminStore>((set) => ({
-isAdmin: false,
+export const UseAdmin = create<AdminStore>((set) => ({
+isAdmin: true,
 setIsAdmin: (value:boolean) => set({isAdmin: value})
 }))

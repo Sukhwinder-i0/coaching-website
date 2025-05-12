@@ -15,15 +15,17 @@ const Faculty = () => {
   
   const [faculties, setFaculties] = useState<FacultyType[]>([])
 
+ 
   useEffect(() => {
     const fetchFaculties = async () => {
-      const res = await fetch('/api/faculty')
+      const res = await fetch('api/faculty')
       const data = await res.json()
+
       setFaculties(data)
     }
 
     fetchFaculties()
-  }, [])
+  },[])
 
   return (
     <div className="w-full px-6 mt-40 mb-20 flex flex-col items-center">

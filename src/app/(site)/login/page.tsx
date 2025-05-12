@@ -6,12 +6,10 @@ import { IoClose } from 'react-icons/io5';
 import InputBox from '@/components/InputBox';
 import Button from '@/components/Button';
 import { useRouter } from 'next/navigation';
-import SelectBox from '@/components/SelectBox';
 import { signIn } from 'next-auth/react';
 
 const Page = () => {
   const [email, setEmail] = useState('');
-  const [type, setType] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
 
@@ -20,7 +18,6 @@ const Page = () => {
       redirect: false,
       email,
       password,
-      userType: type,
     });
 
     if (result?.error) {
@@ -29,11 +26,9 @@ const Page = () => {
     }
 
     alert('Login successful');
-    if (type === 'admin') {
-      router.push('/admin');
-    } else {
-      router.push('/');
-    }
+      router.push('/admin')
+
+    
   };
 
   return (

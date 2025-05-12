@@ -31,7 +31,7 @@ export const authOptions: NextAuthOptions = {
             email: user.email
           };
         } catch (error) {
-          throw error;
+          console.log("Error: ", error)
         }
       }
     })

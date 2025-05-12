@@ -6,7 +6,7 @@ import Item from './Item';
 import Logo from './Logo';
 import Button from '../Button';
 import { LuLogIn } from 'react-icons/lu';
-import { useAdmin } from '@/store/useAdminStore';
+import { UseAdmin } from '@/store/useAdminStore';
 
 const navItems = [
   { text: 'Home', path: '/' },
@@ -16,7 +16,7 @@ const navItems = [
 ];
 
 const Navbar = () => {
-  const { isAdmin } = useAdmin();
+  const { isAdmin } = UseAdmin();
   const pathname = usePathname();
   const router = useRouter();
 

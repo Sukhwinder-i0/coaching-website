@@ -6,7 +6,7 @@ type ModalStore = {
   toggleModalOpen: () => void;
 }
 
-export const useModalOpen = create<ModalStore>((set) => ({
+export const UseModalOpen = create<ModalStore>((set) => ({
   isModalOpen: false,
   setModalOpen: (value) => set({isModalOpen: value}),
   toggleModalOpen: () => set((state) => ({isModalOpen: !state.isModalOpen}))

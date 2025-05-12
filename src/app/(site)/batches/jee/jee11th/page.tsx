@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
 interface Faculty {
@@ -81,7 +82,7 @@ const BatchesPage = () => {
                   {batch.faculties.map((faculty, index) => (
                     <li key={index} className="flex items-center space-x-3 bg-slate-700 px-3 py-2 rounded-lg">
                       {faculty.avatar && (
-                        <img
+                        <Image
                           src={faculty.avatar}
                           alt={faculty.name}
                           className="w-8 h-8 rounded-full object-cover"

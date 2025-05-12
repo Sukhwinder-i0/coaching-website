@@ -1,10 +1,9 @@
 'use client'
 
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import '../globals.css'
-import { useAdmin } from "@/store/useAdminStore";
 
 export default function RootLayout({
   children,
