@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vision Science Academy - Coaching Website
 
-## Getting Started
+A modern, full-stack web application for managing a competitive exam coaching institute. Built with Next.js 15, this platform provides comprehensive batch management, student registration, faculty profiles, and an admin dashboard for JEE, NEET, and Pre-foundation programs.
 
-First, run the development server:
+## 🎯 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Batch Management**: Browse and manage coaching batches for JEE (11th, 12th, Dropper), NEET, and Pre-foundation programs
+- **Faculty Profiles**: Showcase faculty members with their expertise and experience
+- **Toppers Showcase**: Display success stories and achievements of top-performing students
+- **Admin Dashboard**: Comprehensive admin panel for managing batches, faculty, and students
+- **Multiple Modes**: Support for online, offline, and hybrid batch delivery modes
+- **Responsive Design**: Modern, mobile-first UI built with Tailwind CSS
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router) with React 19
+- **Language**: TypeScript
+- **Database**: PostgreSQL with [Prisma](https://www.prisma.io/) ORM
+- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
+- **Styling**: Tailwind CSS 4
+- **UI Components**: Radix UI, Lucide React Icons
+- **State Management**: Zustand
+- **Image Storage**: Cloudinary
+- **Deployment**: Optimized for Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📋 Prerequisites
 
-## Learn More
+- Node.js 18+ and npm/yarn/pnpm
+- PostgreSQL database
+- Cloudinary account (for image uploads)
+- Environment variables configured (see `.env.example`)
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repository**
+   git clone <repository-url>
+   cd coaching-website
+   2. **Install dependencies**sh
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   3. **Set up environment variables**
+   Create a `.env` file in the root directory:
+   DATABASE_URL="postgresql://user:password@localhost:5432/coaching_db"
+   NEXTAUTH_SECRET="your-secret-key"
+   NEXTAUTH_URL="http://localhost:3000"
+   4. **Set up the database**ash
+   npx prisma generate
+   npx prisma migrate dev
+   npx prisma db seed
+   5. **Run the development server**
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   6. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Project Structure
