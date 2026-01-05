@@ -8,6 +8,6 @@ type AdminStore = {
 }
 
 export const UseAdmin = create<AdminStore>((set) => ({
-isAdmin: true,
+isAdmin: false,
 setIsAdmin: (value:boolean) => set({isAdmin: value})
 }))
