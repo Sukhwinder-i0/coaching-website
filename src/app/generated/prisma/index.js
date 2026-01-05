@@ -186,7 +186,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/sukhwinder-singh/Desktop/coding/visioniit/src/app/generated/prisma",
+      "value": "C:\\Users\\dell\\s-singh\\coaching-website\\src\\app\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -195,17 +195,16 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-3.0.x",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/sukhwinder-singh/Desktop/coding/visioniit/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Users\\dell\\s-singh\\coaching-website\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../../../prisma",
   "clientVersion": "6.7.0",
@@ -214,17 +213,18 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "prisma+postgres://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMzVkNTljOTUtNjBhNC00ZDdkLTgyYTQtNzA3ZWQwNjBmMjNiIiwidGVuYW50X2lkIjoiMDIwZDkyNTYwYjJiMjQwNzA5MGVlYWY4ZDBhNjc0MWE5YjRkOTIwZDM3NjdhMjcyZmUxYTZjZjkxNDFlNDg4NCIsImludGVybmFsX3NlY3JldCI6IjE0ZmUxNWY2LTU1YjEtNDIwNy1iOWM5LTYzYTI4MTJhMjdiMCJ9.YBc8q_MtVb3IHHejEw4wEW5LQBbyZ5Ft1za-7nSV7tk"
+        "value": null
       }
     }
   },
   "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id       Int    @id @default(autoincrement())\n  name     String @default(\"admin\")\n  email    String @unique\n  password String\n}\n\nmodel Topper {\n  id         Int     @id @default(autoincrement())\n  name       String\n  rank       String?\n  percentage String?\n  avatar     String\n  batch      Int\n  exam       String\n}\n\nmodel Faculty {\n  id         Int      @id @default(autoincrement())\n  name       String\n  subject    String\n  experience Int\n  bio        String\n  avatar     String?\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n}\n\nmodel Batch {\n  id             String    @id @default(uuid())\n  name           String?\n  category       Category\n  level          Level\n  description    String?\n  startDate      DateTime\n  endDate        DateTime?\n  beforeDiscount Int\n  price          Int\n  createdAt      DateTime  @default(now())\n  updatedAt      DateTime  @updatedAt\n  mode           Mode\n  faculties      String[]\n}\n\nenum Mode {\n  online\n  offline\n  hybrid\n}\n\nenum Category {\n  JEE\n  NEET\n}\n\nenum Level {\n  IX\n  X\n  XI\n  XII\n}\n",
   "inlineSchemaHash": "448967cf4b81d66d4eb6d96e63f35cf913672173b8dad539a3e73a0b82ea5a7e",
-  "copyEngine": false
+  "copyEngine": true
 }
 
 const fs = require('fs')
@@ -261,3 +261,9 @@ const PrismaClient = getPrismaClient(config)
 exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
+// file annotations for bundling tools to include these files
+path.join(__dirname, "query_engine-windows.dll.node");
+path.join(process.cwd(), "src/app/generated/prisma/query_engine-windows.dll.node")
+// file annotations for bundling tools to include these files
+path.join(__dirname, "schema.prisma");
+path.join(process.cwd(), "src/app/generated/prisma/schema.prisma")
