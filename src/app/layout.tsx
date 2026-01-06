@@ -13,7 +13,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className="font-[sans] bg-gradient-to-r from-slate-700 to-slate-800">
+      <body className=" bg-[#ECF9FF]">
         <Navbar />
         <main className="min-h-auto">
           {children}

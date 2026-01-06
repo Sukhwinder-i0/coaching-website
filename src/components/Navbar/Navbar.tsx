@@ -23,9 +23,9 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 z-10 w-full bg-gray-900 shadow-md px-4 sm:px-10 py-2 text-sm">
+    <nav className="fixed top-0 z-10 w-full bg-white shadow-md px-4 py-1 text-sm">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
-        <div className="text-white text-xl font-bold cursor-pointer">
+        <div className="text-black text-xl font-bold cursor-pointer">
           <Logo />
         </div>
 
@@ -39,12 +39,12 @@ const Navbar = () => {
                 isActive={pathname === item.path}
               />
             ))}
-          <Button text="Admin" icon={<LuLogIn />} onClick={() => router.push('/login')} />
+          <Button text="Login" icon={<LuLogIn />} onClick={() => router.push('/login')} />
         </div>
 
         {/* Mobile Toggle Button */}
         <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)} className="text-white">
+          <button onClick={() => setMenuOpen(!menuOpen)} className="text-black">
             ☰
           </button>
         </div>
@@ -52,7 +52,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden flex flex-col gap-4 mt-3 text-white px-4">
+        <div className="md:hidden flex flex-col gap-4 mt-3 text-black px-4">
           {!isAdmin &&
             navItems.map((item) => (
               <Item
@@ -62,7 +62,7 @@ const Navbar = () => {
                 isActive={pathname === item.path}
               />
             ))}
-          <Button text="Admin" icon={<LuLogIn />} onClick={() => router.push('/login')} />
+          <Button text="Login" icon={<LuLogIn />} onClick={() => router.push('/login')} />
         </div>
       )}
     </nav>

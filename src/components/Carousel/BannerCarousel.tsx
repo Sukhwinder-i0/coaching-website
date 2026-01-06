@@ -11,18 +11,16 @@ import Banner from "../Banner"
 export function BannerCarousel() {
   const banners = [
     {
-      url: "/Poster.png",
-      alt: "Banner 1"
-    }, 
-    {
-      url: "/logo.png",
-      alt: "Banner 2"
-    }, 
-    
-    {
       url: "/banner-5.avif",
       alt: "Banner 3"
     }, 
+     
+    {
+      url: "/Poster.png",
+      alt: "Banner 1"
+    }, 
+    
+    
     {
       url: "/banner-4.jpg",
       alt: "Banner 4"
@@ -48,7 +46,10 @@ export function BannerCarousel() {
       url: "/poster-4.jpg",
       alt: "Banner 2"
     }, 
-    
+    {
+      url: "/logo.png",
+      alt: "Banner 2"
+    }
     
     
     
@@ -56,7 +57,7 @@ export function BannerCarousel() {
   ]
 
   return (
-    <Carousel className="w-fullg">
+    <Carousel className="w-full ">
       <CarouselContent>
         {banners.map((banner, index) => (
           <CarouselItem key={index}>

@@ -52,26 +52,26 @@ const BatchDetails: React.FC<BatchDetailsProps> = ({
   mode,
 }) => {
   return (
-    <div className="bg-slate-800 text-white rounded-xl shadow-xl p-6 max-w-3xl w-full mx-auto space-y-4">
+    <div className="bg-[#F8FAFC] text-gray-500 rounded-sm shadow-xl p-6 max-w-3xl w-full mx-auto space-y-4">
       <h2 className="text-2xl font-semibold text-blue-400">{title}</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <p><span className="font-medium text-gray-300">Start Date:</span> {startDate}</p>
-          <p><span className="font-medium text-gray-300">End Date:</span> {endDate}</p>
-          <p><span className="font-medium text-gray-300">Duration:</span> {duration}</p>
-          <p><span className="font-medium text-gray-300">Mode:</span> {mode}</p>
+          <p><span className="font-medium text-gray-800">Start Date:</span> {startDate}</p>
+          <p><span className="font-medium text-gray-800">End Date:</span> {endDate}</p>
+          <p><span className="font-medium text-gray-800">Duration:</span> {duration}</p>
+          <p><span className="font-medium text-gray-800">Mode:</span> {mode}</p>
         </div>
 
         <div>
-          <p><span className="font-medium text-gray-300">Location:</span> {location}</p>
-          <p><span className="font-medium text-gray-300">Category:</span> {category}</p>
-          <p><span className="font-medium text-gray-300">Level:</span> {level}</p>
+          <p><span className="font-medium text-gray-800">Location:</span> {location}</p>
+          <p><span className="font-medium text-gray-800">Category:</span> {category}</p>
+          <p><span className="font-medium text-gray-800">Level:</span> {level}</p>
         </div>
       </div>
 
       <div>
-        <p className="font-medium text-gray-300">Faculties:</p>
+        <p className="font-medium text-gray-900">Faculties:</p>
         <ul className="list-disc list-inside ml-4">
           {faculties.map((faculty, index) => (
             <li key={index}>{faculty}</li>
@@ -80,8 +80,8 @@ const BatchDetails: React.FC<BatchDetailsProps> = ({
       </div>
 
       <div className="text-xl">
-        <span className="line-through text-red-400 mr-2">₹{originalPrice}</span>
-        <span className="text-green-400 font-bold">₹{price}</span>
+        <span className="line-through text-red-600 mr-2">₹{originalPrice}</span>
+        <span className="text-green-700 font-bold">₹{price}</span>
       </div>
     </div>
   );

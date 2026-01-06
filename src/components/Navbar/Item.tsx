@@ -16,8 +16,8 @@ const Item = ({ text, href, isActive, className }: ItemProps) => {
     <Link href={href} prefetch>
       <div
         className={clsx(
-          'py-3 px-5 rounded-sm cursor-pointer transition duration-200 hover:bg-gray-800',
-          isActive ? 'bg-gray-700 text-white' : 'text-gray-300',
+          'py-2 px-3 rounded-sm cursor-pointer transition duration-200 hover:rounded-none hover:border-b-2 border-b-gray-700',
+          isActive ? 'bg-gray-200 text-black border-b-2 border-b-gray-700 hover:rounded-sm' : 'text-gray-900',
           className
         )}
       >

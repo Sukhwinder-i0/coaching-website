@@ -8,7 +8,7 @@ interface BannerProps {
 
 const Banner = ({ url, alt }: BannerProps) => {
   return (
-    <div className="w-full h-50 lg:h-[80vh] flex rounded-xl items-center justify-center overflow-hidden">
+    <div className="w-full h-50 lg:h-[80vh] flex rounded-sm items-center justify-center overflow-hidden">
       <Image width={400} height={400} src={url} alt={alt} className="w-full lg:h-full object-cover" />
     </div>
   )

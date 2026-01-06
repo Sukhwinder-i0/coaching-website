@@ -3,7 +3,7 @@ import Logo from './Navbar/Logo'
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 text-white pt-12 pb-6 px-6">
+    <footer className="bg-[#273F4F] text-white pt-8 pb-6 px-6">
       
      
       <div className="lg:gap-30 gap-10 grid grid-cols-1 lg:grid-cols-4  justify-between">
@@ -14,17 +14,17 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="text-blue-400 font-semibold mb-2">Quick Links</h3>
+          <h3 className="text-[#C6E7FF] font-semibold mb-2">Quick Links</h3>
           <ul className="space-y-1 text-sm text-gray-300">
-            <li><a href="#" className="hover:text-blue-400">Home</a></li>
-            <li><a href="#" className="hover:text-blue-400">Courses</a></li>
-            <li><a href="#" className="hover:text-blue-400">Faculty</a></li>
-            <li><a href="#" className="hover:text-blue-400">Contact</a></li>
+            <li><a href="#" className="hover:text-gray-400">Home</a></li>
+            <li><a href="#" className="hover:text-gray-400">Courses</a></li>
+            <li><a href="#" className="hover:text-gray-400">Faculty</a></li>
+            <li><a href="#" className="hover:text-gray-400">Contact</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 className="text-blue-400 font-semibold mb-2">Contact</h3>
+          <h3 className="text-[#C6E7FF]  font-semibold mb-2">Contact</h3>
           <ul className="space-y-1 text-sm text-gray-300">
             <li>Email: info@visionacademy.com</li>
             <li>Phone: +91 98765 43210</li>
@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="text-blue-400 font-semibold mb-2">Follow Us</h3>
+          <h3 className="text-[#C6E7FF]  font-semibold mb-2">Follow Us</h3>
           <div className="flex gap-4 text-slate-500">
             <a href="#"><Facebook size={18} className="hover:text-white" /></a>
             <a href="#"><Instagram size={18} className="hover:text-white" /></a>

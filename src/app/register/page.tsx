@@ -39,7 +39,7 @@ const Page = () => {
 
   return (
     <div className="fixed inset-0 backdrop-blur-md flex justify-center items-center z-50 ">
-      <div className="max-w-md w-full bg-slate-900 rounded-lg p-6 space-y-4 relative border-l-4 border-blue-500">
+      <div className="max-w-md w-full bg-blue-100 rounded-lg p-6 space-y-4 relative border-l-4 border-blue-500">
 
       {/* <SelectBox 
         value={type} 
@@ -63,7 +63,7 @@ const Page = () => {
           setPassword(e.target.value)} 
         />
 
-        <p className="text-center text-sm text-white">
+        <p className="text-center text-sm text-gray-700">
           Already have an account?
           <button
             className="text-blue-400 hover:underline cursor-pointer ml-1"
@@ -76,7 +76,7 @@ const Page = () => {
         <div className='flex w-full justify-between'>
           <Button text='Signup' icon={<LuUserPlus />} onClick={handleSignup} />
           <Button
-            className='bg-red-600 text-white border border-red-600 hover:shadow-md hover:shadow-red-400'
+            className='bg-red-600 text-white hover:bg-red-800'
             text="Close"
             icon={<IoClose />}
             onClick={() => router.push('/')}

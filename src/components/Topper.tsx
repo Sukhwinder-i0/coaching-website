@@ -13,12 +13,12 @@ interface TopperProps {
 
 const Topper = (props: TopperProps) => {
   return (
-    <div className={`${props.className} w-1/3 flex flex-col items-center justify-around py-8 px-4 bg-slate-900 rounded-2xl h-auto border-2 border-blue-400 shadow-lg shadow-blue-400`}>
+    <div className={`${props.className} w-1/3 flex flex-col items-center justify-around py-8 px-4 bg-slate-100 rounded-2xl h-auto border-2 border-blue-400 shadow-lg shadow-blue-400`}>
         <div className='flex w-full justify-center items-center flex-col pb-6'>
             
             <Image className='w-25 rounded-full h-25 mb-4 border content-overflow' src={props.url || '/default-image.png'} alt={props.alt || 'Default Alt Text'} />
           
-          <div className='text-lg bg-slate-700 px-4 py-2 flex justify-center capitalize rounded-md'>
+          <div className='text-lg px-4 py-2 flex justify-center capitalize rounded-md'>
             {props.name}
           </div>
         </div>

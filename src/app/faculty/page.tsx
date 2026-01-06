@@ -39,7 +39,7 @@ const Faculty = () => {
   }, [])
 
   return (
-    <div className="w-full px-6 mt-40 mb-20 flex flex-col items-center">
+    <div className="w-full px-6 mt-40 mb-20 flex flex-col items-center bg-[#ECF9FF]">
       <p className="text-3xl text-slate-400 pb-10 text-center">
         Our Team on One Mission
       </p>

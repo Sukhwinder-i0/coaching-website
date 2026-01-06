@@ -23,7 +23,7 @@ export default function Categories() {
             type="feature"
             title={categories[0].title}
             description={categories[0].description}
-            className='border-b-4 border-blue-500 cursor-pointer  '
+            className='border-b-4 border-blue-500 cursor-pointer '
             onClick={() => router.push('/batches/jee')}
           />
           <Card

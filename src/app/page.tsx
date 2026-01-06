@@ -8,12 +8,13 @@ import { Award, LineChart, ListChecks } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-r from-slate-700 to-slate-800 text-white px-4 sm:px-6 lg:px-12 py-30">
+    <div className="w-full min-h-screen bg-[#ECF9FF] text-black px-4 sm:px-6 lg:px-12 py-30">
       <div className="max-w-7xl mx-auto flex flex-col justify-center items-center min-h-screen">
         
         <div className="my-10 text-center">
           <Heading title="Vision Science Academy" description="We believe in Quality over Quantity" />
         </div>
+        
 
         <div className="w-6/8 lg:w-7/8">
           <BannerCarousel />
