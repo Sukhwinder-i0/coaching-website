@@ -38,7 +38,7 @@ export const authOptions: NextAuthOptions = {
           };
         } catch (error) {
           console.error("Authorize error:", error);
-          return null; // ⭐ REQUIRED
+          return null; 
         }
       }
       
